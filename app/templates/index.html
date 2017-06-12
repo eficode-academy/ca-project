@@ -1,13 +1,9 @@
-<html>
-    <head>
-        <title>{{ title }} - CodeAcademy</title>
-    </head> 
-    <body>
-        <h1>Hello, {{ user.nickname }}!</h1>
-        {% for post in posts %}
-        <div><p>{{ post.author.nickname }} <br />
-            <i>{{ post.body }}</i><p>
-        </div>
-        {% endfor %}
-    </body> 
-</html>
+{% extends "base.html" %}
+{% block content %}
+<h1>Hello, {{ user.nickname }}!</h1>
+    {% for post in posts %}
+    <div><p>{{ post.author.nickname }} <br />
+      <i>{{ post.body }}</i><p>
+    </div>
+    {% endfor %}
+{% endblock %}
