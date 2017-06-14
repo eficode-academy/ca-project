@@ -143,7 +143,10 @@ The following are suggestions to explorations that you can take.
 - Allow rollbacks to a previous version
 - Setup an ELK-stack for monitoring
 - Use for instance HAProxy to have multiple containers running in production, through a single interface
-- Setup a database in a separate Docker container
+- Use persistent storage for your SQLite database
+- Setup a database in a separate Docker container, change application to use it
 - Investigate the usage of docker-compose for your multi-container setup
 - Investitage the usage of Kubernetes for your multi-container setup
+- Run a linter as part of the pipeline
+- Add something to do your buildtasks for you. Gradle, Rake, Grunt, Make, etc.
 

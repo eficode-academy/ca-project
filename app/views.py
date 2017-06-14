@@ -1,19 +1,31 @@
-from flask import render_template, flash, redirect
-from app import app
-from .forms import LoginForm
+from flask import render_template, flash, redirect, url_for, url_for
+from app import app, db
+from .forms import LoginForm, PostForm
+from .models import Post
+from datetime import datetime
 
-
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 def index():
+    form = PostForm()
+
     user = {'nickname': 'Sofus'}
+    if form.validate_on_submit():
+        post = Post(user_name=form.user_name.data, timestamp=datetime.utcnow(),title=form.title.data, body=form.body.data)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your post is now live!')
+        return redirect(url_for('index'))
+
     posts = [
             {
-                'author': {'nickname': 'Thierry Lacour'},
+                'user_name': 'Thierry Lacour',
+                'title': 'You\'ll have to agree',
                 'body' : 'Random Pokémon Rant'
                 },
             {
-                'author': {'nickname': 'Sofus'},
+                'user_name': "Sofus",
+                'title' : 'You won\'t believe what I know you did last summer',
                 'body' : 'Kids need to learn online behaviour'
                 }
             ]
@@ -21,7 +33,8 @@ def index():
     return render_template('index.html',
             title='CoDeAcademy',
             user=user,
-            posts=posts)
+            posts=posts,
+            form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -32,3 +45,14 @@ def login():
     return render_template('login.html',
                 title='Sign In',
                 form= form)
+
+@app.route('/post', methods=['GET', 'POST'])
+def post():
+    form = PostForm()
+    if form.validate_on_submit():
+        flash('Post submitted')
+        return redirect('/index')
+    return render_template('post.html',
+                        title='Share your wisdom!',
+                        form=form)
+
