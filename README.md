@@ -86,7 +86,7 @@ The ability to run your project in Docker has made many things easier for you. Y
 Things are looking up for you.
 
 You keep stepping a bit on each others toes, so of course you look into some sort of automated tests.
-Luckily the project was not created by entities of pure evil. There are some tests that can be run. You need to automate them.
+Luckily the project was not created by entities of pure evil. There are some tests that can be run. You need to automate them. You can run the current set of tests with `python tests.py`.
 
 Continuous Integration is the goal, and you look to your good old friend Jenkins for some needed support.
 
