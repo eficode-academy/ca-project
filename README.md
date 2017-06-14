@@ -149,4 +149,9 @@ The following are suggestions to explorations that you can take.
 - Investitage the usage of Kubernetes for your multi-container setup
 - Run a linter as part of the pipeline
 - Add something to do your buildtasks for you. Gradle, Rake, Grunt, Make, etc.
+- Stress the application, using for instance the docker image `rufus/siege-engine`
+- Do some TDD on the application
+  - Make sure that you can't do an empty post
+  - Make links in a post clickable
+  - Make the layout prettier
 
