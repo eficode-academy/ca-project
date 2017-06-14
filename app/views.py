@@ -17,19 +17,7 @@ def index():
         flash('Your post is now live!')
         return redirect(url_for('index'))
 
-    posts = [
-            {
-                'user_name': 'Thierry Lacour',
-                'title': 'You\'ll have to agree',
-                'body' : 'Random Pokémon Rant'
-                },
-            {
-                'user_name': "Sofus",
-                'title' : 'You won\'t believe what I know you did last summer',
-                'body' : 'Kids need to learn online behaviour'
-                }
-            ]
-
+    posts = Post.query.all()
     return render_template('index.html',
             title='CoDeAcademy',
             user=user,
