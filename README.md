@@ -40,6 +40,10 @@ You need to know what is happening to the code and who is working on what.
 
 The first step is obvious. Put your code under version control and set up a task management system for your project.
 
+### Waffle.io
+An easy way to create an agile task management setup for your project is to use GitHub issues together with a [waffle](https://waffle.io). This allows you to have a full swim lane and track your tasks in a nice visual way that is completely integrated with GitHub.
+
+Go to [waffle.io](https://waffle.io) and add your repository containing "CoDe Chan" to "your waffle" :).
 
 ### Task
 
