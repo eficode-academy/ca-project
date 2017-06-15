@@ -164,3 +164,4 @@ The following are suggestions to explorations that you can take.
   - Make the layout prettier
   - Add additional pages
   - Add fields to the post
+- Refactor to remove the unused User and login code from the application
