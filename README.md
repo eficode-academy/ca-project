@@ -24,6 +24,8 @@ Your project manager calls you for a meeting and let's you in on the details on 
 
 He truly knows that you are very eager to get started and do cool stuff. But unfortunately they have a Python Flask Web application that runs in production at a bunch of customers, and no one quite remembers how it works.
 
+The application is _CoDe Chan_ an anonymous posting tool. No one really knows why or for what the customers use it. But never the less, it brings in some cash.
+
 It is of course important to keep this running well and good, otherwise Initrode might end up looking very bad indeed.
 
 Congratulations, on your second day you became the proud owner of a piece of Legacy Code.
@@ -121,6 +123,8 @@ Even though you are testing the internal quality of your code - you do not have 
 
 You just want the bare minimum test. So you add a test in your pipeline that will deploy your Dockerized application temporarily and test its availability.
 
+Even a very simple thing as being able to reach your server with `curl` or `wget` would be much better than what you have now. Nothing.
+
 ### Task
 
 - Use your automated deploy to deploy in testing
@@ -158,4 +162,5 @@ The following are suggestions to explorations that you can take.
   - Make sure that you can't do an empty post
   - Make links in a post clickable
   - Make the layout prettier
-
+  - Add additional pages
+  - Add fields to the post
