@@ -22,7 +22,7 @@ To innovate! To use all the skills you've gathered while studying at the univers
 
 Your project manager calls you for a meeting and let's you in on the details on the first task that you'll complete.
 
-He truly knows that you are very eager to get started and do cool stuff. But unfortunately they have a Python Flask Web application that runs in production at a bunch of customers, and no one quite remembers how it works.
+He truly knows that you are very eager to get started and do cool stuff. But unfortunately they have a Python Flask Web application that runs in production at a bunch of customers, and no one quite remembers how it works. _It's called CoDeChan, just like 4chan but for CoDe. You get it, right, don't you? Ahh never mind then...._
 
 It is of course important to keep this running well and good, otherwise Initrode might end up looking very bad indeed.
 
