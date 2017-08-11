@@ -1,6 +1,6 @@
 node {
     stage ('Preparation'){
-        scm checkout
+        checkout scm
     }
     stage('DockerImageBuild'){
         sh 'docker build -t codechan .'
