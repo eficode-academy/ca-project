@@ -1,9 +1,12 @@
-FROM aliarf/codechan:1.0
-MAINTAINER  Ali Arfan "s301599@stud.hioa.no"
+FROM python:2
 
+WORKDIR /usr/src/app
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
 EXPOSE 5000
-RUN echo " Codechan is running nyaaah~"  
 
+CMD [ "python", "./run.py" ]
