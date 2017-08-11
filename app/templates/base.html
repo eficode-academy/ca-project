@@ -1,14 +1,32 @@
-<html>
-    <head>
-        {% if title %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% if title %}
         <title>{{ title }} - CoDe Academy</title>
         {% else %}
-        <title>Welcome to CoDe Academy 2017</title>
+        <title>CodeChan | makes your life happy</title>
         {% endif %}
-    </head>
-    <body>
-        <div> <a href="/index">CoDe Academy</a></div>
-        <hr>
+		<meta charset ="UTF-8">
+		
+		<link rel = "stylesheet" type="text/css" href = "http://student.cs.hioa.no/~s301599/sunit/style.css">
+		<link rel = "stylesheet" type="text/css" href = "http://student.cs.hioa.no/~s301599/sunit/styletilcontent.css">
+		
+		
+</head>
+
+<body class = "body">
+
+	<header>
+		<nav>
+			<img src="http://logos.textgiraffe.com/logos/logo-name/Chan-designstyle-boots-m.png">
+		</nav>
+	</header>
+
+	
+	<div class = "content">
+		<section>
+			<hr>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
             <ul>
@@ -19,5 +37,11 @@
             {% endif %}
         {% endwith %}
         {% block content %}{% endblock %}
-    </body>
+			
+			
+		</section>
+		
+	</div>
+<body>
+
 </html>

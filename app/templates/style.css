@@ -1,0 +1,95 @@
+body {
+	color: #000305;
+	font-size: 150%;
+	font-family: Arial, 'Lucida Sans Unicode', sans-serif;
+	line-height: 1.5;
+	background-color: #ddd;
+	background-image: url('bilde2.jpg');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.body {
+	margin: 0 auto;
+	width: 100%;
+	clear: both;
+}
+
+nav {
+	text-align: center;
+	text-shadow: 0 0 4px #000305;
+	box-shadow: 0 0 1px 1px #888888;
+	background-color: #055475;
+	height: 50px;
+}
+
+nav a {
+	text-decoration: none;
+	display: inline-block;
+	padding: 10px 80px;
+	height: 30px;
+}
+
+nav a:link, nav a:visited  {
+	color: #fff;
+}
+
+nav a:hover, nav a:active {
+	background-color: #066892;
+}
+
+.mainheader {
+	color: #043e57;
+	text-align: center;
+	margin: 5% auto;
+}
+
+.mainheader h1 {
+	margin: 0;
+	text-transform: uppercase;
+	font-size:4em;
+}
+
+.mainheader h2 {
+	margin: 0;
+	font-size: 1.2em;
+}
+
+.downloads {
+	text-align: center;
+}
+
+@media screen and (max-width: 1200px) {
+
+	body {
+		background-size: 333%;
+	}
+
+	.body .content {
+		width: 95%;
+	}
+
+	.mainheader h1 {
+		font-size: 680%; 
+	}
+
+	.mainheader h2 {
+		font-size: 300%;
+	}
+
+	nav {
+		text-align: center;
+		height: 351px;
+	}
+
+	nav a {
+		font-size: 250%;
+		display: inline-block;
+		padding: 0 0 0 0;
+		height: 30px;
+		width: 100%;
+		height: 88px;
+	}
+
+
+}
