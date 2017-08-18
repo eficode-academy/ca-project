@@ -64,7 +64,7 @@ Go to [waffle.io](https://waffle.io) and add your repository containing "CoDe Ch
 - Make sure that you have a waffle for your Github repository.
 
 Python hints for the issues script: 
-- Linux: sudo apt-get install pip 
+- Linux: sudo apt-get install python-pip 
 - Linux: sudo pip install requests
 - Mac: sudo easy_install pip
 - Mac: sudo pip install requests
