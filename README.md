@@ -1,7 +1,17 @@
 # Keystone project
 
-This project is meant for you to make awesome, with the skills in your Continuous Delivery and DevOps toolbox.
+This project is meant for you to make awesome software, with the skills in your Continuous Delivery and DevOps toolbox.
 Have fun, automate and be awesome!
+
+## Setup
+
+Fork this repository so you can make changes to it:
+
+![Forking project](/docs/images/forking-project.png)
+
+On your repository, enable issues:
+
+![Enabling issues](/docs/images/enabling-issues.png)
 
 ## Welcome to Initrode
 
@@ -11,7 +21,7 @@ It even sounded like you would work with some bleeding edge technologies.
 
 So now you're ready for whatever tasks they'll throw at you.
 You started yesterday together with a few college grads.
-You spent the day yesterday getting access to the building. 
+You spent the day yesterday getting access to the building.
 You know now how to both obtain lunch and relieve any pressures such a feast might impose on you.
 
 
@@ -78,7 +88,7 @@ Now that you've fixed that hurdle and you've actually got an application running
 
 You've got your dependencies handled and all is good. Or sort of good. It is tedious to set up dependencies on each system that you want to run on.
 
-Luckily you know how to use Docker. 
+Luckily you know how to use Docker.
 
 ### Task
 
@@ -108,7 +118,7 @@ Continuous Integration is the goal, and you look to your good old friend Jenkins
 Every time that release time comes around, you get uncomfortable. You do not feel safe about deploying to producting, and it always seems to be
 the case that nothing is quite the same from time to time.
 
-It is now time to script your way to deployment. 
+It is now time to script your way to deployment.
 
 ### Task
 
