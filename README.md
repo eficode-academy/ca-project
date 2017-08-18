@@ -60,6 +60,7 @@ Go to [waffle.io](https://waffle.io) and add your repository containing "CoDe Ch
 ### Task
 
 - Make a Git repository containing the code
+- Feed issues into your repository using github_issues.py (update relevant variables, and set the environment variable GITHUB_PASSWORD)
 - Make sure that you have a waffle for your Github repository.
 
 _From now on you should consider every step in a task as a story. You should break it down into tasks that you groom._
