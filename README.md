@@ -121,7 +121,7 @@ Continuous Integration is the goal, and you look to your good old friend Jenkins
 ### Task
 
 - Setup a Jenkins master
-- Setup a Continuous Integration pipeline ( perhaps using the Flow? )
+- Setup a Continuous Integration pipeline (perhaps using [Praqma's Git flow](https://github.com/Praqma/git-phlow)?)
 - Run the tests in the pipeline
 - Make sure you maintain mainline integrity
 
