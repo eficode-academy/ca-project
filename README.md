@@ -63,6 +63,11 @@ Go to [waffle.io](https://waffle.io) and add your repository containing "CoDe Ch
 - Feed issues into your repository using github_issues.py (update relevant variables, and set the environment variable GITHUB_PASSWORD)
 - Make sure that you have a waffle for your Github repository.
 
+Python hints for the issues script: 
+- Linux: sudo apt-get install pip 
+- Linux: sudo pip install requests
+- Mac: sudo easy_install pip
+- Mac: sudo pip install requests
 _From now on you should consider every step in a task as a story. You should break it down into tasks that you groom._
 
 ## Bat out of hell
