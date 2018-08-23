@@ -3,6 +3,8 @@
 This project is meant for you to make awesome software, with the skills in your Continuous Delivery and DevOps toolbox.
 Have fun, automate and be awesome!
 
+The project can be run by 1-3 persons in a team.
+
 ## Setup
 
 Fork this repository so you can make changes to it:
@@ -24,7 +26,6 @@ You started yesterday together with a few college grads.
 You spent the day yesterday getting access to the building.
 You know now how to both obtain lunch and relieve any pressures such a feast might impose on you.
 
-
 You've got your state-of-the-art laptops booted and are ready to make the world a better place.
 To innovate! To use all the skills you've gathered while studying at the university.
 
@@ -38,7 +39,7 @@ The application is _CoDe Chan_ an anonymous posting tool. No one really knows wh
 
 It is of course important to keep this running well and good, otherwise Initrode might end up looking very bad indeed.
 
-Congratulations, on your second day you became the proud owner of a piece of Legacy Code.
+Congratulations, on your second day you became the proud owner of a piece of **Legacy Code**.
 
 Now, where to start?
 
@@ -53,6 +54,7 @@ You need to know what is happening to the code and who is working on what.
 The first step is obvious. Put your code under version control and set up a task management system for your project.
 
 ### Waffle.io
+
 An easy way to create an agile task management setup for your project is to use GitHub issues together with a [waffle](https://waffle.io). This allows you to have a full swim lane and track your tasks in a nice visual way that is completely integrated with GitHub.
 
 Go to [waffle.io](https://waffle.io) and add your repository containing "CoDe Chan" to "your waffle" :).
@@ -106,7 +108,8 @@ Luckily you know how to use Docker.
 
 - Create a Dockerfile containing your application code and requirements
 - Build Docker image
-- Run the application in Docker
+- Run the application in Docker with a docker-compose file
+- Check Dockerfile and compose file into your repository.
 
 ## Testing the waters
 
@@ -121,21 +124,21 @@ Continuous Integration is the goal, and you look to your good old friend Jenkins
 ### Task
 
 - Setup a Jenkins master
-- Setup a Continuous Integration pipeline (perhaps using [Praqma's Git flow](https://github.com/Praqma/git-phlow)?)
+- Setup a Continuous Integration pipeline (**as code**) (perhaps using [Praqma's Pretested Integration](https://wiki.jenkins.io/display/JENKINS/Pretested+Integration+Plugin))
 - Run the tests in the pipeline
 - Make sure you maintain mainline integrity
 
 ## Cut out the boring stuff
 
-Every time that release time comes around, you get uncomfortable. You do not feel safe about deploying to producting, and it always seems to be
-the case that nothing is quite the same from time to time.
+Every time that release time comes around, you get uncomfortable. You do not feel safe about deploying to production, and it always seems to be the case that nothing is quite the same from time to time.
 
 It is now time to script your way to deployment.
 
 ### Task
 
 - Create a script that runs the application locally
-- Augment your script such that you can deploy to multiple targets ( eg. local, staging, production )
+- Augment your script such that you can deploy to multiple targets ( eg. local, staging, production ).
+- If you are more people in the team, try to push your code to one of the other servers, using its private IP.
 
 ## A means to an end
 
@@ -169,7 +172,12 @@ Now it is time to tread new paths.
 
 The following are suggestions to explorations that you can take.
 
+- Run a linter as part of the pipeline
+- Stress the application, using for instance the docker image `rufus/siege-engine`
+- Refactor to remove the unused User and login code from the application
+- Add another machine as a build node, and make it run some of the steps in the pipeline.
 - Deploy to production if functional tests pass
+- Add something to do your buildtasks for you. Gradle, Rake, Grunt, Make, etc.
 - Allow rollbacks to a previous version
 - Setup an ELK-stack for monitoring
 - Use for instance HAProxy to have multiple containers running in production, through a single interface
@@ -177,13 +185,9 @@ The following are suggestions to explorations that you can take.
 - Setup a database in a separate Docker container, change application to use it
 - Investigate the usage of docker-compose for your multi-container setup
 - Investitage the usage of Kubernetes for your multi-container setup
-- Run a linter as part of the pipeline
-- Add something to do your buildtasks for you. Gradle, Rake, Grunt, Make, etc.
-- Stress the application, using for instance the docker image `rufus/siege-engine`
 - Do some TDD on the application
   - Make sure that you can't do an empty post
   - Make links in a post clickable
   - Make the layout prettier
   - Add additional pages
   - Add fields to the post
-- Refactor to remove the unused User and login code from the application
