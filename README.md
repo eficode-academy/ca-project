@@ -5,11 +5,13 @@ Have fun, automate and be awesome!
 
 The project can be run by 1-3 persons in a team.
 
-## Setup
+## Fork the project
 
 Fork this repository so you can make changes to it:
 
 ![Forking project](/docs/images/forking-project.png)
+
+## Enable issues
 
 On your repository, enable issues:
 
@@ -66,7 +68,7 @@ Go over to the `Projects` tab and create your project.
 - Use your fork of the Git repository containing the code
 - Create issues in your repository
   - See `github_issues.py` for the issues to create
-  - To run the Python script, edit `github_issues.py` with your own GitHub account name
+  - To run the Python script, **edit** `github_issues.py` to set `REPO_OWNER` and `USERNAME` with your own GitHub account name
   - Then set an environment variable called `GITHUB_PASSWORD` e.g. `export GITHUB_PASSWORD=yourSuperSecretPassword`
 
 Python hints for the issues script:
