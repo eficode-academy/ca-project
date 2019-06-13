@@ -53,11 +53,13 @@ You need to know what is happening to the code and who is working on what.
 
 The first step is obvious. Put your code under version control and set up a task management system for your project.
 
-### Waffle.io
+### GitHub Projects
 
-An easy way to create an agile task management setup for your project is to use GitHub issues together with a [waffle](https://waffle.io). This allows you to have a full swim lane and track your tasks in a nice visual way that is completely integrated with GitHub.
+An easy way to create an agile task management setup for your project is to use GitHub issues together with their `projects` tab. This allows you to have a full swim lane and track your tasks in a nice visual way that is completely integrated with GitHub.
 
-Go to [waffle.io](https://waffle.io) and add your repository containing "CoDe Chan" to "your waffle" :).
+Go over to the `Projects` tab and create your project.
+
+![Create project](/docs/images/create-project.png)
 
 ### Task
 
@@ -66,7 +68,6 @@ Go to [waffle.io](https://waffle.io) and add your repository containing "CoDe Ch
   - See `github_issues.py` for the issues to create
   - To run the Python script, edit `github_issues.py` with your own GitHub account name
   - Then set an environment variable called `GITHUB_PASSWORD` e.g. `export GITHUB_PASSWORD=yourSuperSecretPassword`
-- Make sure you have a Waffle project for your GitHub repository
 
 Python hints for the issues script:
 - Linux:
@@ -76,7 +77,7 @@ Python hints for the issues script:
   - `sudo easy_install pip`
   - `sudo pip install requests`
 
-_From now on you should consider every step in a task as a story. You should break it down into tasks that you groom._
+_From now on you should consider every step in a task as a story, also created in your GH repository. Remember to groom them together, breaking down the stories where it makes sense._
 
 ## Bat out of hell
 
@@ -100,14 +101,16 @@ Now that you've fixed that hurdle and you've actually got an application running
 
 ## I'll pack my bags and go
 
-You've got your dependencies handled and all is good. Or sort of good. It is tedious to set up dependencies on each system that you want to run on.
+You've got your dependencies handled and all is good. Or sort of good. 
+
+It is tedious to set up dependencies on each system that you want to run on.
 
 Luckily you know how to use Docker.
 
 ### Task
 
-- Create a Dockerfile containing your application code and requirements
-- Build Docker image
+- Create a `Dockerfile` containing your application code and requirements
+- Build the Docker image
 - Run the application in Docker with a docker-compose file
 - Check Dockerfile and compose file into your repository.
 
@@ -173,7 +176,7 @@ Now it is time to tread new paths.
 The following are suggestions to explorations that you can take.
 
 - Run a linter as part of the pipeline
-- Stress the application, using for instance the docker image `rufus/siege-engine`
+- Stress the application, using for instance the docker image `rufus/siege-engine` (more info about using the application can be found [here](https://www.linode.com/docs/tools-reference/tools/load-testing-with-siege/))
 - Refactor to remove the unused User and login code from the application
 - Add another machine as a build node, and make it run some of the steps in the pipeline.
 - Deploy to production if functional tests pass
