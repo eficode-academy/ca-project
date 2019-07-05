@@ -16,7 +16,7 @@ jobs:
       - run:
           name: install dependencies
           command: 
-            pip install -r --user requirements.txt
+            pip install -r requirements.txt
 
       - run:
           name: run codechan
