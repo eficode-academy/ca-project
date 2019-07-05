@@ -20,7 +20,8 @@ jobs:
 workflows:
   version: 2
   default:
-    - base
-    - test:
-        requires:
-          - base
+    jobs:
+      - base
+      - test:
+          requires:
+            - base
