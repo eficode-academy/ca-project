@@ -1,4 +1,3 @@
-app
 flask
 flask_sqlalchemy
 flask_wtf
