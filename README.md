@@ -3,7 +3,7 @@
 This project is meant for you to make awesome software, with the skills in your Continuous Delivery and DevOps toolbox.
 Have fun, automate and be awesome!
 
-The project can be run by 1-3 persons in a team.
+The project can be run by 1-3 people in a team.
 
 ## Fork the project
 
@@ -28,7 +28,7 @@ You started yesterday together with a few college grads.
 You spent the day yesterday getting access to the building.
 You know now how to both obtain lunch and relieve any pressures such a feast might impose on you.
 
-You've got your state-of-the-art laptops booted and are ready to make the world a better place.
+You've got your state-of-the-art laptop booted and are ready to make the world a better place,
 To innovate! To use all the skills you've gathered while studying at the university.
 
 ## Speak of the devil
@@ -37,9 +37,9 @@ Your project manager calls you for a meeting and let's you in on the details on 
 
 He truly knows that you are very eager to get started and do cool stuff. But unfortunately they have a Python Flask Web application that runs in production at a bunch of customers, and no one quite remembers how it works. _It's called CoDeChan, just like 4chan but for CoDe. You get it, right, don't you? Ahh never mind then...._
 
-The application is _CoDe Chan_ an anonymous posting tool. No one really knows why or for what the customers use it. But never the less, it brings in some cash.
+The application is _CoDe Chan_ an anonymous posting tool. No one really knows why or for what the customers use it. But none the less, it brings in some cash.
 
-It is of course important to keep this running well and good, otherwise Initrode might end up looking very bad indeed.
+It is obviously important to keep this application running well and good, otherwise Initrode might end up looking very bad indeed.
 
 Congratulations, on your second day you became the proud owner of a piece of **Legacy Code**.
 
