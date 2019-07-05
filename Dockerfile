@@ -1,13 +1,4 @@
-FROM python:2.7.16
-
-# Set env variable to keep file clean
-ENV PROJECT_DIRECTORY /python
-
-# Copy requirements into project
-COPY requirements.txt $PROJECT_DIRECTORY/ 
-
-# Install requirements
-RUN pip install -r $PROJECT_DIRECTORY/requirements.txt
+FROM yagoor/ca-project
 
 # Copy project files
 COPY create_db.py run.py config.py $PROJECT_DIRECTORY/

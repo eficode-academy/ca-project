@@ -1,0 +1,10 @@
+FROM python:2.7.16
+
+# Set env variable to keep file clean
+ENV PROJECT_DIRECTORY /python
+
+# Copy requirements into project
+COPY requirements.txt $PROJECT_DIRECTORY/ 
+
+# Install requirements
+RUN pip install -r $PROJECT_DIRECTORY/requirements.txt

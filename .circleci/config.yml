@@ -1,15 +1,26 @@
 jobs:
-  test:
-    docker:
-      - image: python:2.7.16 
+  base:
+    machine: true
     steps:
       - checkout
-      - run: pip install -r requirements.txt 
+        # Login to docker
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+        # build the application image
+      - run: docker build -t yagoor/ca-project -f Dockerfile-base .
+        # deploy the image
+      - run: docker push yagoor/ca-project
+
+  test:
+    docker:
+      - image: yagoor/ca-project 
+    steps:
+      - checkout
       - run: python tests.py
 
 workflows:
   version: 2
   default:
-    jobs:
-      - test
-
+    - base
+    - test:
+        requires:
+          - base
