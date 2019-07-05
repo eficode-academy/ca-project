@@ -1,8 +1,8 @@
-version: "1"
+version: "2.2"
 
 services:
   codechan:
-  image: pinconspiracy/ca-project
-  container_name: ca-project
-  ports:
-    - 5000:5000
+    image: pinconspiracy/ca-project
+    container_name: ca-project
+    ports:
+      - 5000:5000
