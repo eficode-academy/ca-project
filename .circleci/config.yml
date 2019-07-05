@@ -31,4 +31,5 @@ jobs:
           name: Deploy Over SSH
           command: |
             echo $SSH_KEY > keyfile
+            chmod 400 keyfile
             ssh -oStrictHostKeyChecking=no -i keyfile ubuntu@35.205.161.120 "touch succes"
