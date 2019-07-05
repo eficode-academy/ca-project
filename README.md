@@ -124,14 +124,16 @@ Things are looking up for you.
 You keep stepping a bit on each others toes, so of course you look into some sort of automated tests.
 Luckily the project was not created by entities of pure evil. There are some tests that can be run. You need to automate them. You can run the current set of tests with `python tests.py`.
 
-Continuous Integration is the goal, and you look to your good old friend Jenkins for some needed support.
+Continuous Integration is the goal, and you look to your good old friend CircleCI for some needed support.
 
 ### Task
 
-- Setup a Jenkins master
-- Setup a Continuous Integration pipeline (**as code**) (perhaps using [Praqma's Pretested Integration](https://wiki.jenkins.io/display/JENKINS/Pretested+Integration+Plugin))
+- Setup a CircleCI project
+- Setup a Continuous Integration pipeline (the config CircleCI is running) 
 - Run the tests in the pipeline
-- Make sure you maintain mainline integrity
+- Make sure you maintain mainline integrity meaning all commits to master needs to be tested by CI before merging.
+
+> Hint: A good starting point could be [GitHub Flow](https://help.github.com/en/articles/github-flow)
 
 ## Cut out the boring stuff
 
@@ -139,11 +141,13 @@ Every time that release time comes around, you get uncomfortable. You do not fee
 
 It is now time to script your way to deployment.
 
+> Hint: If you want to run a dockerfile on your server, you can ssh into the server from CircleCI, just like you SSH into the server from your machine. For more into, look [here](https://circleci.com/docs/2.0/deployment/#ssh)
+
 ### Task
 
-- Create a script that runs the application locally
+- Create a script that runs the application on your server.
 - Augment your script such that you can deploy to multiple targets ( eg. local, staging, production ).
-- If you are more people in the team, try to push your code to one of the other servers, using its private IP.
+- If you are more people in the team, try to push your code to one of the other servers, using its private IP (You can get that by issuing the command `ifconfig` ).
 
 ## A means to an end
 
@@ -158,8 +162,8 @@ Even a very simple thing as being able to reach your server with `curl` or `wget
 ### Task
 
 - Use your automated deploy to deploy in testing
-- Do functional testing
-- Display result in Jenkins
+- Do functional testing (You know your servers IP)
+- Display result in CircleCI
 - This might not be a tollgate criteria, but it is important information for you to gain.
 
 ## Now we have time for the cool stuff
