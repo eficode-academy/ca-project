@@ -18,11 +18,17 @@ jobs:
           command: 
             pip install --user -r requirements.txt
 
-      - run:
-          name: run codechan
-          command: 
-            python run.py 
+#      - run:
+#          name: run codechan
+#          command: 
+#            python run.py 
 
       - store_artifacts:
           path: test-reports
           destination: test-reports
+
+      - run:
+          name: Deploy Over SSH
+          command: |
+            echo $SSH_KEY > keyfile
+            ssh -oStrictHostKeyChecking=no -i keyfile ubuntu@$35.205.161.120 "touch succes"
