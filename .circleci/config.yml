@@ -30,6 +30,7 @@ jobs:
       - run: docker push $DOCKER_USER/codechan:$CIRCLE_SHA1
 
   deploy:
+    machine: true
     steps:
       - attach_workspace:
           at: .
