@@ -18,3 +18,8 @@ jobs:
           root: .
           paths:
             - .
+workflows:
+  version: 2
+  two_job_flow:
+    jobs:
+      - test
