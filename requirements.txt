@@ -1,1 +1,3 @@
 Flask==1.0.2
+FLASK-SQLAlchemy==2.3.2
+FLASK-WTF==0.14
