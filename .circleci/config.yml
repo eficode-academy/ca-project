@@ -22,9 +22,9 @@ jobs:
           at: .
       - run: |
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker build -t $DOCKER_USER/ca-project:$CIRCLE_SHA1 -t $DOCKER_USER/ca-project:testing -t $DOCKER_USER/ca-project:production .
-            docker push $DOCKER_USER/ca-project:testing
-            docker push $DOCKER_USER/ca-project:production
+            docker build -t $DOCKER_USER/ca-project:$CIRCLE_SHA1 -t $DOCKER_USER/ca-project:latest .
+            docker push $DOCKER_USER/ca-project:$CIRCLE_SHA1
+            docker push $DOCKER_USER/ca-project:latest
   deploy-testing:
     machine: true
     steps:
@@ -34,7 +34,7 @@ jobs:
           name: Deploy to Testing
           command: |
               scp ./server.sh $SSH_USER@$SSH_HOST_TESTING:server.sh
-              ssh $SSH_USER@$SSH_HOST_TESTING "export TARGET=testing; . server.sh"
+              ssh $SSH_USER@$SSH_HOST_TESTING "export TARGET=testing; . server.sh $CIRCLE_SHA1"
   deploy-production:
     machine: true
     steps:
@@ -44,7 +44,7 @@ jobs:
           name: Deploy to production
           command: |
               scp ./server.sh $SSH_USER@$SSH_HOST_PRODUCTION:server.sh
-              ssh $SSH_USER@$SSH_HOST_PRODUCTION "export TARGET=production; . server.sh"
+              ssh $SSH_USER@$SSH_HOST_PRODUCTION "export TARGET=production; . server.sh $CIRCLE_SHA1"
 
 workflows:
   version: 2
@@ -67,7 +67,6 @@ workflows:
       - hold:
           type: approval
           requires:
-            - test
             - deploy-testing
           filters:
             branches:
