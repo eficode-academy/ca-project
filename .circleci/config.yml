@@ -29,7 +29,15 @@ jobs:
             docker push $DOCKER_USER/ca-project:$CIRCLE_SHA1
             docker push $DOCKER_USER/ca-project:latest
             fi
-
+  deploy-testing:
+    machine: true
+    steps:
+      - run:
+          name: Deploy to Testing
+          command: |
+              if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              ssh $SSH_USER@$SSH_HOST ". server.sh"
+              fi
 workflows:
   version: 2
   main_flow:
@@ -38,3 +46,6 @@ workflows:
       - dockerize:
           requires:
             - test
+      - deploy-testing:
+          requires:
+            - dockerize
