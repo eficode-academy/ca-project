@@ -22,7 +22,8 @@ jobs:
           at: .
       - run: |
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker build -t $DOCKER_USER/ca-project:CIRCLE_SHA1 .
+            docker build -t $DOCKER_USER/ca-project:$CIRCLE_SHA1 -t $DOCKER_USER/ca-project:testing -t $DOCKER_USER/ca-project:production .
+            docker push $DOCKER_USER/ca-project:testing $DOCKER_USER/ca-project:production
   deploy-testing:
     machine: true
     steps:
@@ -31,8 +32,6 @@ jobs:
       - run:
           name: Deploy to Testing
           command: |
-              docker tag $DOCKER_USER/ca-project:CIRCLE_SHA1 $DOCKER_USER/ca-project:testing
-              docker push $DOCKER_USER/ca-project:testing
               scp ./server.sh $SSH_USER@$SSH_HOST_TESTING:server.sh
               ssh $SSH_USER@$SSH_HOST_TESTING "./server.sh"
   deploy-production:
@@ -43,11 +42,9 @@ jobs:
       - run:
           name: Deploy to production
           command: |
-              docker tag $DOCKER_USER/ca-project:CIRCLE_SHA1 $DOCKER_USER/ca-project:production
-              docker push $DOCKER_USER/ca-project:production
               scp ./server.sh $SSH_USER@$SSH_HOST_PRODUCTION:server.sh
               ssh $SSH_USER@$SSH_HOST_PRODUCTION "./server.sh"
-              
+
 workflows:
   version: 2
   main_flow:
@@ -67,6 +64,7 @@ workflows:
               only:
                 - master
       - deploy-production:
+          type: approval
           requires:
             - dockerize
           filters:
