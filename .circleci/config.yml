@@ -37,7 +37,8 @@ jobs:
       - run:
           name: deploy over ssh
           command: | 
-            ssh $SSH_USER@$SSH_HOST "docker run -p 5000:5000 grameaway/codechan"
+            ssh $SSH_USER@$SSH_HOST "docker pull grameaway/codechan:latest &&  
+            docker container stop codechan && docker run -p 5000:5000 -rm --name codechan grameaway/codechan"
 
 workflows:
   version: 2
