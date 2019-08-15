@@ -80,7 +80,7 @@ jobs:
           at: .
       - run:
           name: Stresstest application
-          command: siege -t 10 $SSH_HOST:5000 
+          command: siege -t10s $SSH_HOST:5000 
 
 workflows:
   version: 2
