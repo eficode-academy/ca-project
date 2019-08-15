@@ -1,0 +1,20 @@
+version: 2
+jobs: 
+  test:
+    docker:
+      - image: circleci/ubuntu
+    steps: 
+      - checkout
+      - run:
+          name: unit tests
+          command: |
+            sudo apt-get install python-pip -y
+            sudo pip install requests 
+            pip install -r /requriments.txt
+            python ./test.py
+      - store_test_results:
+          path: ./test.db
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .

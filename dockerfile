@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 RUN apt-get update -y
 RUN apt-get install python-pip -y 
-RUN pip install requests -y
+RUN pip install requests
 COPY ./ /pythonweb
-CMD pip install -r requirements.txt && python /pythonweb/run.py 
+CMD pip install -r /pythonweb/requirements.txt && python /pythonweb/run.py 
 
