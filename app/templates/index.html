@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Welcome to CoDe-chan! Welcome my friend</h1>
+<h2>Chat</h2>
     {% for post in posts %}
     <div><p><b>{{ post.title }}</b> by <i>{{ post.user_name }}</i> <br />
         {{ post.body }}</p>
