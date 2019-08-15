@@ -1,3 +1,5 @@
+#!/bin/sh
+
 docker container stop $(docker ps -a -q)
 docker container prune -f
 docker pull grameaway/codechan:latest
