@@ -23,7 +23,8 @@ jobs:
       - run: |
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker build -t $DOCKER_USER/ca-project:$CIRCLE_SHA1 -t $DOCKER_USER/ca-project:testing -t $DOCKER_USER/ca-project:production .
-            docker push $DOCKER_USER/ca-project:testing $DOCKER_USER/ca-project:production
+            docker push $DOCKER_USER/ca-project:testing
+            docker push $DOCKER_USER/ca-project:production
   deploy-testing:
     machine: true
     steps:
