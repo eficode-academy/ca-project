@@ -13,5 +13,8 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install dependencies
+          command: pip install -r requirements.txt
+      - run:
           name: Test CoDeChan
           command: python tests.py
