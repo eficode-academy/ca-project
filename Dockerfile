@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM python:2
 RUN apt-get update && apt-get install python-pip -y
 WORKDIR /app
 COPY . /app
