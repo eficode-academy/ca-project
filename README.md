@@ -79,6 +79,8 @@ Python hints for the issues script:
   - `sudo easy_install pip`
   - `sudo pip install requests`
 
+Alternatively, you should already know how to run this in a Docker image :-)
+
 _From now on you should consider every step in a task as a story, also created in your GH repository. Remember to groom them together, breaking down the stories where it makes sense._
 
 ## Bat out of hell
