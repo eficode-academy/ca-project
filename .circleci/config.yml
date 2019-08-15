@@ -20,7 +20,7 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      # Login to docker
+      # Login to docker account
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
 
       # build the application image
