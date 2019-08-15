@@ -11,8 +11,6 @@ jobs:
       - run:
           name: Testing
           command: python tests.py
-      - store_test_results:
-          path: test-results
       - persist_to_workspace:
           root: .
           paths:
@@ -47,6 +45,9 @@ workflows:
     jobs:
       - test
       - dockerize:
+          filters:
+            branches:
+              only: master
           requires:
             - test
       - deploy-testing:
