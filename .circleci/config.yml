@@ -17,8 +17,24 @@ jobs:
           root: .
           paths:
             - .
+  dockerize:
+    machine: true
+    steps:
+      - attach_workspace:
+          at: .
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker build -t $DOCKER_USER/ca-project:$CIRCLE_SHA1 -t $DOCKER_USER/ca-project:latest .
+      - run: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            docker push $DOCKER_USER/ca-project:$CIRCLE_SHA1
+            docker push $DOCKER_USER/ca-project:latest
+            fi
+
 workflows:
   version: 2
   main_flow:
     jobs:
       - test
+      - dockerize:
+          requires:
+            - test
