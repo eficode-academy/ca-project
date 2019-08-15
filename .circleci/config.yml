@@ -1,0 +1,16 @@
+version: 2
+jobs:
+  test:
+    docker:
+      - ubuntu:18.04
+    steps:
+      - checkout
+      - run:
+          name: Testing
+          command: python tests.py
+      - store_test_results:
+          path: build/test-results
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
