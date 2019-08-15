@@ -29,6 +29,15 @@ jobs:
       # deploy the image
       - run: docker push $DOCKER_USER/codechan:$CIRCLE_SHA1
 
+  deploy:
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+        name: deploy over ssh
+        command: | 
+          ssh $SSH_USER@$SSH_HOST "docker run -p 5000:5000 grameaway/codechan"
+
 workflows:
   version: 2
   flow:
@@ -37,3 +46,6 @@ workflows:
       - dockerize:
           requires:
             - test
+      - deploy:
+          requires:
+            - dockerize
