@@ -16,8 +16,7 @@ jobs:
           paths:
             - .
   package:
-    docker:
-      - image: circleci/openjdk:8-jdk
+    machine: true
     steps:
       - attach_workspace:
           at: .
