@@ -44,7 +44,7 @@ jobs:
           name: Functional testing
           command: |
               scp ./curl_test.sh $SSH_USER@$SSH_HOST_TESTING:curl_test.sh
-              ssh $SSH_USER@$SSH_HOST_TESTING . curl_test.sh
+              ssh $SSH_USER@$SSH_HOST_TESTING . curl_test.sh $SSH_HOST_TESTING
   deploy-production:
     machine: true
     steps:
