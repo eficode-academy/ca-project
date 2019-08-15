@@ -15,12 +15,28 @@ jobs:
           root: .
           paths:
             - .
+  package:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Build artifact
+          command: mkdir ./dist && zip -r ./dist/$CIRCLE_SHA1.zip ./
+      - store_artifacts:
+          path: ./dist/
+          destination: dist
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
   dockerize:
     machine: true
     steps:
       - attach_workspace:
           at: .
-      # Login to docker account
+      # Login to docker 
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
 
       # build the application image
@@ -50,9 +66,12 @@ workflows:
   flow:
     jobs:
       - test
-      - dockerize:
+      - package:
           requires:
             - test
+      - dockerize:
+          requires:
+            - package
       - deploy:
           requires:
             - dockerize
