@@ -76,15 +76,15 @@ workflows:
   flow:
     jobs:
       - test
-      - package:
-          requires:
-            - test
       - dockerize:
           requires:
-            - package
+            - test
       - smoketest:
           requires:
             - dockerize
+      - package:
+          requires:
+            - smoketest
       - deploy:
           requires:
             - smoketest
