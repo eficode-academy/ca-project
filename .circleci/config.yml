@@ -78,7 +78,7 @@ workflows:
       - test
       - package:
           requires:
-            - test
+            - smoketest
       - dockerize:
           requires:
             - package
