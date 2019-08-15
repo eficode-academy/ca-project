@@ -9,12 +9,10 @@ jobs:
           name: unit tests
           command: |
             ls
-            sudo apt-get install python-pip -y
-            sudo pip install requests 
-            pip install -r requirements.txt
-            sudo python test.py
+            sudo pip install -r requirements.txt
+            python tests.py
       - store_test_results:
-          path: ./test.db
+          path: test.db
       - persist_to_workspace:
           root: .
           paths:
