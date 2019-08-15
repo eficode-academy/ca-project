@@ -55,33 +55,25 @@ You need to know what is happening to the code and who is working on what.
 
 The first step is obvious. Put your code under version control and set up a task management system for your project.
 
-### GitHub Projects
+### Collaboration with GitHub Projects
 
-An easy way to create an agile task management setup for your project is to use GitHub issues together with their `projects` tab. This allows you to have a full swim lane and track your tasks in a nice visual way that is completely integrated with GitHub.
+The rest of this README contains a lot of individual tasks to complete. Just as with any other project, you will want some way of managing which tasks you are currently working on and what is on you backlog. You could do this with sticky-notes on a wall, but we would recommend you use an actual online task management system instead - especially if you are working as a group.
+
+An easy way to create an agile task management setup for your project is to use GitHub issues together with the GitHub Projects feature found on the `projects` tab. This allows you to have a full swim lane and track your tasks in a nice visual way that is completely integrated with GitHub.
 
 Go over to the `Projects` tab and create your project.
 
 ![Create project](/docs/images/create-project.png)
 
-### Task
+_Consider every step in a task as a story, also created as an issue in your GH repository. Groom them together, breaking down the stories where it makes sense._
 
-- Use your fork of the Git repository containing the code
-- Create issues in your repository
-  - See `github_issues.py` for the issues to create
-  - To run the Python script, **edit** `github_issues.py` to set `REPO_OWNER` and `USERNAME` with your own GitHub account name
-  - Then set an environment variable called `GITHUB_PASSWORD` e.g. `export GITHUB_PASSWORD=yourSuperSecretPassword`
+It is good practice to always mention which issue you are working on in your commit messages. GitHub will actually use this information to link your issues and commits together in the UI, giving you valuable traceability information. 
 
-Python hints for the issues script:
-- Linux:
-  - `sudo apt-get install python-pip`
-  - `sudo pip install requests`
-- Mac:
-  - `sudo easy_install pip`
-  - `sudo pip install requests`
+The even cooler next step is to use GitHubs build in automation to automatically close issues when you commit the change. See [Closing issues using keywords](https://help.github.com/en/articles/closing-issues-using-keywords).
 
-Alternatively, you should already know how to run this in a Docker image :-)
+You can even move beyond this and look at (Automation for project boards)[https://help.github.com/en/articles/about-automation-for-project-boards].
 
-_From now on you should consider every step in a task as a story, also created in your GH repository. Remember to groom them together, breaking down the stories where it makes sense._
+... and now on to the actual project work.
 
 ## Bat out of hell
 
