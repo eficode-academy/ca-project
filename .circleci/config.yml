@@ -14,4 +14,4 @@ jobs:
       - checkout
       - run:
           name: Test CoDeChan
-          command: python test.py
+          command: python tests.py
