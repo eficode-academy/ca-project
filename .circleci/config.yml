@@ -26,17 +26,20 @@ jobs:
       - run: docker build -t $DOCKER_USER/ca-project:$CIRCLE_SHA1 -t $DOCKER_USER/ca-project:latest .
       - run: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-            docker push $DOCKER_USER/ca-project:$CIRCLE_SHA1
-            docker push $DOCKER_USER/ca-project:latest
+              docker push $DOCKER_USER/ca-project:$CIRCLE_SHA1
+              docker push $DOCKER_USER/ca-project:latest
             fi
   deploy-testing:
     machine: true
     steps:
+      - attach_workspace:
+          at: .
       - run:
           name: Deploy to Testing
           command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              ssh $SSH_USER@$SSH_HOST ". server.sh"
+                scp ./server.sh $SSH_USER@$SSH_HOST:server.sh
+                ssh $SSH_USER@$SSH_HOST ". server.sh"
               fi
 workflows:
   version: 2
