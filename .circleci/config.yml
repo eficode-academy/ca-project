@@ -35,6 +35,16 @@ jobs:
           command: |
               scp ./server.sh $SSH_USER@$SSH_HOST_TESTING:server.sh
               ssh $SSH_USER@$SSH_HOST_TESTING "export TARGET=testing; . server.sh $CIRCLE_SHA1"
+  functional_test:
+    machine: true
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Functional testing
+          command: |
+              scp ./curl_test.sh $SSH_USER@$SSH_HOST_TESTING:curl_test.sh
+              ssh $SSH_USER@$SSH_HOST_TESTING . server.sh
   deploy-production:
     machine: true
     steps:
@@ -64,8 +74,7 @@ workflows:
             branches:
               only:
                 - master
-      - hold:
-          type: approval
+      - functional_test:
           requires:
             - deploy-testing
           filters:
@@ -74,7 +83,7 @@ workflows:
                 - master
       - deploy-production:
           requires:
-            - hold
+            - functional_test
           filters:
             branches:
               only: master
