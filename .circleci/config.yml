@@ -2,9 +2,12 @@ version: 2
 jobs:
   test:
     docker:
-      - ubuntu:18.04
+      - image: python:2
     steps:
       - checkout
+      - run:
+          name: Setup dependencies
+          command: pip install -r requirements.txt
       - run:
           name: Testing
           command: python tests.py
@@ -14,3 +17,8 @@ jobs:
           root: .
           paths:
             - .
+workflows:
+  version: 2
+  main_flow:
+    jobs:
+      - test
