@@ -12,7 +12,7 @@ jobs:
           name: Testing
           command: python tests.py
       - store_test_results:
-          path: build/test-results
+          path: test-results
       - persist_to_workspace:
           root: .
           paths:
