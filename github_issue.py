@@ -4,11 +4,11 @@ import requests
 
 # Authentication for user filing issue (must have read/write access to
 # repository to add issue to)
-USERNAME = 'YourGitHubHandle'
+USERNAME = 'UlrikSandberg'
 PASSWORD = os.environ['GITHUB_PASSWORD']
 
 # The repository to add this issue to
-REPO_OWNER = 'YourGitHubHandle'
+REPO_OWNER = 'UlrikSandberg'
 REPO_NAME = 'ca-project'
 
 def make_github_issue(title, body=None, labels=None):
