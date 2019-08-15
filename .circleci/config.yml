@@ -58,6 +58,7 @@ jobs:
           command: |
             ssh $SSH_USER@$SSH_HOST_SMOKETEST "chmod +x smoketest.sh && ./smoketest.sh $SSH_HOST_SMOKETEST"
 
+
   deploy:
     machine: true
     steps:
@@ -70,6 +71,16 @@ jobs:
           name: deploy over ssh
           command: |
             ssh $SSH_USER@$SSH_HOST "chmod +x server.sh && ./server.sh"
+
+  streetest:
+    docker:
+      - image: rufus/siege-engine
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Stresstest application
+          command: siege $SSH_HOST:5000
 
 workflows:
   version: 2
@@ -88,3 +99,6 @@ workflows:
       - deploy:
           requires:
             - smoketest
+      - streetest:
+          requires:
+            - package
