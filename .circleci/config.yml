@@ -36,11 +36,11 @@ jobs:
           at: .
       - run:
           name: copy server script
-          command: scp ./server.sh $SSH_USER@$SSH_HOST:/home/ubuntu/
+          command: scp ./server.sh $SSH_USER@$SSH_HOST:/home/ubuntu/ 
       - run:
           name: deploy over ssh
           command: | 
-            ssh $SSH_USER@$SSH_HOST "./server.sh"
+            ssh $SSH_USER@$SSH_HOST "chmod +x server.sh && ./server.sh"
 
 workflows:
   version: 2
