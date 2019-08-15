@@ -64,10 +64,18 @@ workflows:
             branches:
               only:
                 - master
-      - deploy-production:
+      - hold:
           type: approval
           requires:
-            - dockerize
+            - test
+            - deploy-testing
+          filters:
+            branches:
+              only:
+                - master
+      - deploy-production:
+          requires:
+            - hold
           filters:
             branches:
               only: master
