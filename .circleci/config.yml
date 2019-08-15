@@ -35,9 +35,9 @@ jobs:
       - attach_workspace:
           at: .
       - run:
-        name: deploy over ssh
-        command: | 
-          ssh $SSH_USER@$SSH_HOST "docker run -p 5000:5000 grameaway/codechan"
+          name: deploy over ssh
+          command: | 
+            ssh $SSH_USER@$SSH_HOST "docker run -p 5000:5000 grameaway/codechan"
 
 workflows:
   version: 2
