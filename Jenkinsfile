@@ -16,6 +16,7 @@ stage('Clone down') {
            }
        } 
         steps {
+            skipDefaultCheckout(true)
             unstash 'code'
             sh 'ci/python-test.sh'
             stash excludes: '.git', name: 'code' //Is this step optionally
@@ -25,6 +26,7 @@ stage('Clone down') {
        parallel{
            stage('Create artifacts') {
                steps {
+            skipDefaultCheckout(true)
                    sh '''mkdir ./artifacts
                         tar -zcvf ./artifacts/flaskproject.tar.gz .'''
                     archiveArtifacts artifacts: 'artifacts/'
@@ -36,6 +38,7 @@ stage('Clone down') {
             DOCKERCREDS = credentials('docker_login') //use the credentials just created in this stage
         }
         steps {
+            skipDefaultCheckout(true)
             unstash 'code' //unstash the repository code
             sh 'ci/build-docker.sh'
             stash excludes: '.git', name: 'code'
@@ -52,6 +55,7 @@ stage('Clone down') {
            DOCKERCREDS = credentials('docker_login')
        }
        steps {
+            skipDefaultCheckout(true)
         unstash 'code' //unstash the repository code
         sh 'echo "$DOCKERCREDS_PSW" | docker login -u "$DOCKERCREDS_USR" --password-stdin' //login to docker hub with the credentials above
         sh 'ci/push-docker.sh'
