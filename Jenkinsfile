@@ -1,5 +1,5 @@
 pipeline {   
-  enviornment {
+  environment {
     docker_username = 'mathn16'
   }
   agent any
@@ -27,7 +27,7 @@ pipeline {
       }
     }
     stage('DockerHub push') {
-      enviornment{
+      environment{
         DOCKERCREDS = credentials('docker_login')
       }
       steps {
