@@ -26,7 +26,7 @@ pipeline {
     }
   }
   environment {
-    docker_username = ''
+    docker_username = 'nibug18'
   }
     stage('Test') {
       steps {
