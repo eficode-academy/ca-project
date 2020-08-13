@@ -27,12 +27,6 @@ pipeline {
       }
     }
     stage('DockerHub push') {
-      when {
-        anyOf{
-          branch 'master'
-          changeRequest()
-        }
-      }
       enviornment{
         DOCKERCREDS = credentials('docker_login')
       }
