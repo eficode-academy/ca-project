@@ -5,7 +5,7 @@ pipeline {
       parallel {
         stage('Dockerrize app') {
           steps {
-            sh 'docker build -t ca-project'
+            sh 'docker build -t ca-project .'
           }
         }
 
