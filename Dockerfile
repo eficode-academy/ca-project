@@ -9,10 +9,12 @@ RUN apt-get update \
     wget && apt-get clean
 
 RUN pip3 install Flask-WTF
+RUN pip3 install Flask
     
 COPY . /app
 
 WORKDIR /app
+
 
 
 ENTRYPOINT [ "python3", "run.py" ]
