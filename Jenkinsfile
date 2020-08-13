@@ -9,7 +9,7 @@ pipeline {
 
     stage('Parrallel') {
       parallel {
-        stage('Test') 
+        stage('Test') {
           options { skipDefaultCheckout true }
           agent {
             docker {
