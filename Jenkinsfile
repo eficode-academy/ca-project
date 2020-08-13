@@ -71,11 +71,12 @@ stage('Clone down') {
        }
        steps {
             skipDefaultCheckout(true)
-            sshagent (credentials: ['ubuntu']) {
-                sh 'ssh -o StrictHostKeyChecking=no ubuntu@34.78.185.127 touch hello'
-            }
             unstash 'code'
-            
+            sshagent (credentials: ['ubuntu']) {
+                sh 'scp -o StrictHostKeyChecking=no ./docker-compose.yml ubuntu@34.78.185.127:/docker-compose.yml'
+                //sh 'ssh -o StrictHostKeyChecking=no ubuntu@34.78.185.127 touch hello'
+            }
+
        }
    }
 
