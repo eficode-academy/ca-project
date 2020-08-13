@@ -15,10 +15,8 @@ pipeline {
 
         stage('Artifacts') {
           steps {
-            script {
-            zip zipFile:'zippedfiles.zip', archive: true, dir: './'
-            archiveArtifacts artifacts: 'zippedfiles.zip'
-            }
+            sh './build_zip.sh'
+            archiveArtifacts artifacts: 'ca-build.zip'
           }
         }
       }
