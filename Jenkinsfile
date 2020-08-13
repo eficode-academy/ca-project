@@ -53,10 +53,15 @@ pipeline {
                     image 'python:latest'
                 }
         }
+        options{
+            skipDefaultCheckout()
+        }
       steps{
         sh 'ls'
         sh 'pip install -r requirements.txt'
         sh 'python tests.py'
+        sh 'python badtest.py'
+
       }
     }
 
