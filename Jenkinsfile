@@ -6,15 +6,17 @@ pipeline {
         sh 'echo "hello world!"'
       }
     }
-    parallel{
-      stage('build artifacts'){
-         steps{
-          sh 'echo "hello world!"'
-         }
-      }
-      stage('build docker image'){
-        steps{
-          sh 'echo "hello world!"'
+    stage('parallel execution'){
+      parallel{
+        stage('build artifacts'){
+          steps{
+            sh 'echo "hello world!"'
+          }
+        }
+        stage('build docker image'){
+          steps{
+            sh 'echo "hello world!"'
+          }
         }
       }
     }
