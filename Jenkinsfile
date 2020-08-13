@@ -33,7 +33,6 @@ pipeline {
         unstash 'code'
         sh 'pip3 install -r requirements.txt'
         sh 'python3 tests.py'
-        stash excludes: '.git', name: 'code'
       }
     }
   }
