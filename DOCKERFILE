@@ -1,7 +1,14 @@
-FROM python:3.8.5-slim
+FROM ubuntu:18.04
 
-COPY ./ca-project
+RUN apt-get update
+RUN apt-get install -y python3-pip python3-dev build-essential
 
-RUN python -m pip install -r requirements.txt
+COPY requirements.txt /usr/src/app/
 
-CMD python /ca-project/run.py
+RUN pip3 install -r /usr/src/app/requirements.txt
+
+COPY . /usr/src/app/
+
+EXPOSE 5000
+
+CMD ["python3", "/usr/src/app/run.py"]
