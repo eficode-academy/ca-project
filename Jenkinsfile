@@ -47,10 +47,12 @@ stage('Clone down') {
 
    }
    }
-  
    
    stage('Push docker image') {
        agent any
+       when {
+           branch 'master'
+       }
        environment {
            DOCKERCREDS = credentials('docker_login')
        }
@@ -62,5 +64,31 @@ stage('Clone down') {
         stash excludes: '.git', name: 'code'
      }
    }
+   stage('Deploy to production') {
+       agent any
+       when {
+           branch 'master'
+       }
+       steps {
+            skipDefaultCheckout(true)
+            unstash 'code'
+           sh 'echo hello production'
+       }
+   }
+
+   stage('Deploy to test') {
+       agent any 
+       when {
+         not {
+           branch 'master'
+           }
+       }
+       steps {
+            skipDefaultCheckout(true)
+            unstash 'code'
+           sh 'echo hello test'
+       }
+   }
+
  }
 }
