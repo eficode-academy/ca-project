@@ -72,7 +72,7 @@ pipeline {
         sh 'echo "All following sh cmds are mysteriously required and may not be deleted"'
         sh 'docker-compose down'
         sh 'docker ps'
-        sh 'docker container rm pyApp'
+        sh 'docker container rm -f pyApp'
         sh 'docker ps'
         sh 'docker-compose up -d'
         sh 'docker ps'
