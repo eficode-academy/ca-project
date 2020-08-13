@@ -2,6 +2,17 @@ FROM ubuntu:18.04
 
 RUN apt-get update \
     && apt-get install -y \
-    pip3 \
     python3 \
-    sqlalchemy
+    python3-pip \
+    python3-flask \
+    python3-flask-sqlalchemy \
+    wget && apt-get clean
+
+RUN pip3 install Flask-WTF
+    
+COPY . /app
+
+WORKDIR /app
+
+
+ENTRYPOINT [ "python3", "run.py" ]
