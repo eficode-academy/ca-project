@@ -43,6 +43,7 @@ stage('Clone down') {
    }
 
    }
+   }
   
    
    stage('Push docker image') {
@@ -56,7 +57,6 @@ stage('Clone down') {
         sh 'ci/push-docker.sh'
         stash excludes: '.git', name: 'code'
      }
-
    }
  }
 }
