@@ -11,8 +11,10 @@ pipeline {
     }
 
     stage('Test') {
-      docker {
-        image 'python'
+      agent {
+        docker {
+          image 'python'
+        }
       }
       options {
         skipDefaultCheckout(true)
@@ -27,8 +29,10 @@ pipeline {
     stage('Parallel stage') {
       parallel {
         stage('package') {
-          docker {
-            image 'python'
+          agent {
+            docker {
+              image 'python'
+            }
           }
           options {
             skipDefaultCheckout(true)
