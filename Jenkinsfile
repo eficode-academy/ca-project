@@ -3,37 +3,37 @@ pipeline {
   stages {
     stage('initial') {
       steps {
-        sh 'sh \'echo "hello world!"'
+        sh 'echo "hello world!"'
       }
     }
     parallel{
       stage('build artifacts'){
-        // steps{
-
-        // }
+         steps{
+          sh 'echo "hello world!"'
+         }
       }
       stage('build docker image'){
-        // steps{
-
-        // }
+        steps{
+          sh 'echo "hello world!"'
+        }
       }
     }
     stage('test'){
-      // steps{
-         
-      // }
+      steps{
+        sh 'echo "hello world!"' 
+      }
     }
 
     stage('push to docker'){
-      // steps{
-        
-      // }
+      steps{
+        sh 'echo "hello world!"'
+      }
     }
     
     stage('deploy on server'){
-      // step{
-       
-      // }
+      step{
+        sh 'echo "hello world!"'
+      }
     }
 
   }
