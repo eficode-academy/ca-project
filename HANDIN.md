@@ -30,5 +30,5 @@ You are welcome to use your own project and set it up with the process described
 # Links
 
 - Jenkins - <http://104.155.56.49:8080/job/ca-project/>
-- GitHub - <https://github.com/mathn16/ca-project>t>
+- GitHub - <https://github.com/mathn16/ca-project>
 - DockerHub - <https://hub.docker.com/r/mathn16/ca-project> / docker pull mathn16/ca-project
