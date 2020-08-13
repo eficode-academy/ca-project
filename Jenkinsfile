@@ -33,6 +33,7 @@ pipeline {
             sh 'apt-get install zip -y'
             sh 'zip test $PWD'
             archiveArtifacts 'test.zip'
+           }
       steps {
         sh 'echo "psuhing"'
       }
