@@ -5,15 +5,17 @@ pipeline {
     }
   }
   stages {
-    stage('error') {
+    stage('clone down') {
       steps {
-        sh 'echo "hej"'
+        stash excludes: '.git', name: 'code'
       }
     }
     stage('Test') {
       steps {
+        unstash 'code'
         sh 'pip3 install -r requirements.txt'
         sh 'python3 tests.py'
+        stash excludes: '.git', name: 'code'
       }
     }
   }
