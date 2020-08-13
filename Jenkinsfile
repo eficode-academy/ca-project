@@ -77,10 +77,22 @@ pipeline {
     }
     
     stage('deploy on server'){
+       
+            
       steps{
-        sh 'echo "hello world!"'
-      }
+        script{
+            withCredentials([sshUserPrivateKey(credentialsId: 'testkey', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'username')]) {
+            def remote =[:]
+            remote.name = 'sharankaMachine'
+            remote.host = '35.195.199.29'
+            remote.allowAnyHosts = true
+            remote.user = username
+            remote.identityFile = identity
+            sshCommand remote: remote, command: 'docker stop $(docker ps -a -q)'
+            sshCommand remote: remote, command: 'docker container run -p 80:5000 -d d0wnt0wn3d/codechan'
+            }
+        }
+        }
+     }
     }
-
-  }
 }
