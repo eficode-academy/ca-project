@@ -47,10 +47,12 @@ stage('Clone down') {
 
    }
    }
-  
    
    stage('Push docker image') {
        agent any
+       when {
+           branch 'master'
+       }
        environment {
            DOCKERCREDS = credentials('docker_login')
        }
