@@ -1,8 +1,8 @@
-pipeline {
-  agent any
+pipeline {   
   enviornment {
     docker_username = 'mathn16'
   }
+  agent any
   stages {
     stage('Dockerrize app') {
       parallel {
@@ -34,6 +34,5 @@ pipeline {
         sh 'echo "Hello World"'
       }
     }
-
   }
 }
