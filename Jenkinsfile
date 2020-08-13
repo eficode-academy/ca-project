@@ -86,7 +86,7 @@ stage('Clone down') {
        steps {
             skipDefaultCheckout(true)
             unstash 'code'
-           sh 'echo hello test'
+           sh 'echo hello test1'
        }
    }
 
