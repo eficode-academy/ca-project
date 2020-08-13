@@ -139,7 +139,7 @@ It is now time to script your way to deployment.
 
 ### Task
 
-- Create a script that runs the application on your server.
+- Create a script that runs the application on your server. (tip, you can use the ssh key you were given to the cloud instance. Look here fore more guidance: https://www.jenkins.io/blog/2019/02/06/ssh-steps-for-jenkins-pipeline/)
 - Augment your script such that you can deploy to multiple targets ( eg. local, staging, production ).
 - If you are more people in the team, try to push your code to one of the other servers, using its private IP (You can get that by issuing the command `ifconfig` ).
 
