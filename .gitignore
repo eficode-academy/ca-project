@@ -7,3 +7,4 @@ __pycache__/
 app.db
 test.db
 .vscode/*
+testkey
