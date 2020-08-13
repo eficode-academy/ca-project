@@ -13,12 +13,12 @@ pipeline {
           agent {
              docker {
                image 'python:3.5.1'
+             }
            }
           steps {
             sh 'pip install -r requirements.txt'
             sh 'python tests.py'
           }
-        }
      }
 
         stage('zip codebase') {
@@ -26,11 +26,11 @@ pipeline {
             docker {
               image 'alpine'
            }
+          }
            steps {
             unstash 'code_base'
             sh 'apt install zip'
-          }
-        }
+           }
        }
       }
     }
