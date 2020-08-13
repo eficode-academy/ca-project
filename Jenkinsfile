@@ -69,7 +69,7 @@ pipeline {
 
     stage('Functional Test'){
         steps {
-        sh 'docker-compose up'
+        sh 'docker-compose up -d'
 	sh 'docker-compose down'
       }
     }
