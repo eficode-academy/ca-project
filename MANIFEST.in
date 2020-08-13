@@ -1,3 +1,4 @@
 recursive-include app/templates *
 recursive-include app/static *
 include run.py
+include requirements.txt
