@@ -47,7 +47,8 @@ pipeline {
       steps{
         unstash 'code'
         sh 'apt-get update && apt-get install -y zip unzip'
-        sh 'zip -r . project_artifact'
+        sh 'zip -r project_artifact.zip .'
+        sh 'ls -l project_artifact.zip'
       }
     }
   }
