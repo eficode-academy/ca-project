@@ -22,15 +22,16 @@ pipeline {
       }
     }
 
-    stage('package') {
-      steps {
-        unstash 'code'
-        sh 'python3 setup.py check'
-        sh 'python3 setup.py sdist'
-        archiveArtifacts 'dist/'
-      }
-
+    stage('parallel stage') {
       parallel {
+        stage('package') {
+          steps {
+            unstash 'code'
+            sh 'python3 setup.py check'
+            sh 'python3 setup.py sdist'
+            archiveArtifacts 'dist/'
+          }
+        }
         stage('Push to docker') {
           when {
             branch 'master'
