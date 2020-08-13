@@ -72,7 +72,7 @@ pipeline {
             unstash 'code' //unstash the repository code
             sh 'echo "$DOCKERCREDS_PSW" | docker login -u "$DOCKERCREDS_USR" --password-stdin' //login to docker hub with the credentials above
             sh 'docker push "$DOCKER_USER/codechan:latest"'
-            sh 'echo "this is requested from develop branch!'
+            sh 'echo "this is requested from develop branch!"'
         }
     }
     
