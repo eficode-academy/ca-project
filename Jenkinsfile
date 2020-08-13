@@ -15,7 +15,7 @@ pipeline {
 
         stage('Artifacts') {
           steps {
-            zip zipFile: name: 'zippedfiles.zip', archive: true, dir: './'
+            zip zipFile:'zippedfiles.zip', archive: true, dir: './'
             archiveArtifacts artifacts: 'zippedfiles.zip', fingerprint: true
           }
         }
