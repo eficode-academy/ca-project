@@ -9,7 +9,7 @@ pipeline {
         stash(excludes: '.git', name: 'code')
       }
     }
-    stage('Test'){
+    stage('Test') {
       steps{
         unstash 'code'
         sh 'apt-get update && apt-get install -y python3-pip'
