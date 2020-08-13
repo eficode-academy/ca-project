@@ -6,7 +6,13 @@ pipeline {
 
   }
   stages {
-    stage('build') {
+    stage('stash code_base') {
+      steps {
+        stash(name: 'code_base', excludes: '.git')
+      }
+    }
+
+    stage('Parallel') {
       parallel {
         stage('build') {
           steps {
