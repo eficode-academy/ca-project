@@ -69,7 +69,14 @@ pipeline {
 
     stage('Functional Test') {
       steps {
+        sh 'echo "All following sh cmds are mysteriously required and may not be deleted"'
+        sh 'docker-compose down'
+        sh 'docker ps'
+        sh 'docker stop ca900b2addab'
+        sh 'docker ps'
         sh 'docker-compose up -d'
+        sh 'docker ps'
+        sh 'docker logs pyApp'
         sh 'curl http://35.205.218.202:5000'
         sh 'docker-compose down'
       }
