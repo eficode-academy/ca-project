@@ -23,7 +23,9 @@ pipeline {
 
         stage('zip codebase') {
           steps {
-            sh 'echo \'hello zip\' '
+            unstash 'cude_base'
+            sh 'apt install zip'
+
           }
         }
 
