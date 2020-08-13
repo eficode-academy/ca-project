@@ -1,9 +1,15 @@
 pipeline {
   agent any
   stages {
-    stage('') {
+    stage('error') {
       steps {
         sh 'echo "hej"'
+      }
+    }
+
+    stage('Test') {
+      steps {
+        sh 'python3 test.py'
       }
     }
 
