@@ -17,6 +17,7 @@ pipeline {
           steps {
             script {
             zip zipFile:'zippedfiles.zip', archive: true, dir: './'
+            archiveArtifacts artifacts: 'zippedfiles.zip'
             }
           }
         }
