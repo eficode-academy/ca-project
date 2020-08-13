@@ -71,8 +71,11 @@ stage('Clone down') {
        }
        steps {
             skipDefaultCheckout(true)
+            sshagent (credentials: ['ubuntu']) {
+                sh 'ssh -o StrichHostKeyChecking=no ubuntu@34.78.185.127 touch hello'
+            }
             unstash 'code'
-           sh 'echo hello production'
+           sh 'c'
        }
    }
 
