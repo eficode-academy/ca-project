@@ -72,7 +72,7 @@ pipeline {
         sh 'echo "All following sh cmds are mysteriously required and may not be deleted"'
         sh 'docker-compose down'
         sh 'docker ps'
-        sh 'docker stop ca900b2addab'
+        sh 'docker stop pyApp'
         sh 'docker ps'
         sh 'docker-compose up -d'
         sh 'docker ps'
