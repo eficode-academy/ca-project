@@ -75,6 +75,7 @@ stage('Clone down') {
                 sh 'ssh -o StrictHostKeyChecking=no ubuntu@34.78.185.127 touch hello'
             }
             unstash 'code'
+            
        }
    }
 
