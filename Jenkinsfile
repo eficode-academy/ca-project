@@ -24,7 +24,7 @@ pipeline {
         stage('zip codebase') {
           agent {
             docker {
-              image 'alpine'
+              image 'ubuntu'
            }
           }
            steps {
