@@ -15,7 +15,7 @@ pipeline {
       steps{
         unstash 'code'
         sh 'apt-get update && apt-get install -y python3-pip'
-        sh 'pip install -r requirements.txt'
+        sh 'pip3 install -r app/requirements.txt'
         sh 'python tests.py'
       }
     }
