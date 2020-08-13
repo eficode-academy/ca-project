@@ -1,5 +1,5 @@
 pipeline {   
-  environment {
+   environment {
     docker_username = 'mathn16'
   }
   agent any
@@ -36,8 +36,10 @@ pipeline {
         DOCKERCREDS = credentials('docker_login')
       }
       when {
-        branch 'master';
-        changeRequest()
+        anyOf{
+          branch 'master';
+          changeRequest()
+        }
       }
       steps {
         unstash 'code'
