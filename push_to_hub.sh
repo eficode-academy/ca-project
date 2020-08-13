@@ -1,0 +1,1 @@
+docker push mathn16/ca-project:latest

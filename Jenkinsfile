@@ -35,8 +35,14 @@ pipeline {
       environment{
         DOCKERCREDS = credentials('docker_login')
       }
+      when {
+        branch 'master';
+        changeRequest()
+      }
       steps {
-        sh 'echo "Hello World"'
+        unstash 'code'
+        sh 'echo "$DOCKERCREDS_PSW" | docker login -u "$DOCKERCREDS_USR" --password-stdin'
+        sh './push_to_hub.sh'
       }
     }
   }
