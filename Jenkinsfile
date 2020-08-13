@@ -60,15 +60,20 @@ pipeline {
         sh 'ls'
         sh 'pip install -r requirements.txt'
         sh 'python tests.py'
-        sh 'python badtest.py'
-
       }
     }
 
     stage('push to docker'){
-      steps{
-        sh 'echo "hello world!"'
-      }
+      when {branch "master"}
+        environment {
+          DOCKERCREDS = credentials('docker-login')
+        }
+        steps {
+            unstash 'code' //unstash the repository code
+            sh 'echo "$DOCKERCREDS_PSW" | docker login -u "$DOCKERCREDS_USR" --password-stdin' //login to docker hub with the credentials above
+            sh 'docker push "$DOCKER_USER/codechan:latest"'
+            sh 'echo "this is requested from develop branch!'
+        }
     }
     
     stage('deploy on server'){
