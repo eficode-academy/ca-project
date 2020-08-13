@@ -35,5 +35,13 @@ pipeline {
         sh 'python3 tests.py'
       }
     }
+    stage('package') {
+      steps {
+        unstash 'code'
+        sh 'python3 setup.py check'
+        sh 'python3 setup.py sdist'
+        archiveArtifacts 'dist/'
+      }
+    }
   }
   }
