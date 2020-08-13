@@ -1,9 +1,5 @@
 pipeline {
-  agent {
-    docker {
-      image 'python'
-    }
-  }
+  agent any
   environment {
     docker_username = 'nibug18'
   }
@@ -15,6 +11,12 @@ pipeline {
     }
 
     stage('Test') {
+      docker {
+        image 'python'
+      }
+      options {
+        skipDefaultCheckout(true)
+      }
       steps {
         unstash 'code'
         sh 'pip3 install -r requirements.txt'
@@ -25,6 +27,12 @@ pipeline {
     stage('Parallel stage') {
       parallel {
         stage('package') {
+          docker {
+            image 'python'
+          }
+          options {
+            skipDefaultCheckout(true)
+          }
           steps {
             unstash 'code'
             sh 'python3 setup.py check'
