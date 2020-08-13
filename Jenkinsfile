@@ -73,6 +73,7 @@ pipeline {
         sh 'docker-compose down'
         sh 'docker ps'
         sh 'docker stop pyApp'
+        sh 'docker container rm pyApp'
         sh 'docker ps'
         sh 'docker-compose up -d'
         sh 'docker ps'
