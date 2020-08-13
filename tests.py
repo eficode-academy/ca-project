@@ -10,7 +10,7 @@
 import os
 import unittest
 from datetime import datetime
-from config import basedir
+from config import basedir 
 from app import app, db
 from app.models import Post
 
