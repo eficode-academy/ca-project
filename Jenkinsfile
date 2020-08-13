@@ -9,17 +9,6 @@ stage('Clone down') {
         stash excludes: '.git', name: 'code'
     }
 }
-   stage('Build docker image'){
-        agent any
-        environment {
-            DOCKERCREDS = credentials('docker_login') //use the credentials just created in this stage
-        }
-        steps {
-            unstash 'code' //unstash the repository code
-            sh 'ci/build-docker.sh'
-            stash excludes: '.git', name: 'code'
-        }
-   }
    stage('Run python tests') {
        agent {
            docker {
@@ -27,11 +16,51 @@ stage('Clone down') {
            }
        } 
         steps {
+            skipDefaultCheckout(true)
             unstash 'code'
             sh 'ci/python-test.sh'
             stash excludes: '.git', name: 'code' //Is this step optionally
-        } 
-       
+        }    
+   }
+   stage('Parallel') {
+       parallel{
+           stage('Create artifacts') {
+               steps {
+            skipDefaultCheckout(true)
+                   sh '''mkdir ./artifacts
+                        tar -zcvf ./artifacts/flaskproject.tar.gz .'''
+                    archiveArtifacts artifacts: 'artifacts/'
+               }
+           }
+            stage('Build docker image'){
+        agent any
+        environment {
+            DOCKERCREDS = credentials('docker_login') //use the credentials just created in this stage
+        }
+        steps {
+            skipDefaultCheckout(true)
+            unstash 'code' //unstash the repository code
+            sh 'ci/build-docker.sh'
+            stash excludes: '.git', name: 'code'
+        }
+   }
+
+   }
+   }
+  
+   
+   stage('Push docker image') {
+       agent any
+       environment {
+           DOCKERCREDS = credentials('docker_login')
+       }
+       steps {
+            skipDefaultCheckout(true)
+        unstash 'code' //unstash the repository code
+        sh 'echo "$DOCKERCREDS_PSW" | docker login -u "$DOCKERCREDS_USR" --password-stdin' //login to docker hub with the credentials above
+        sh 'ci/push-docker.sh'
+        stash excludes: '.git', name: 'code'
+     }
    }
  }
 }
