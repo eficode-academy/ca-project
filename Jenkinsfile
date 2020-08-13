@@ -27,8 +27,8 @@ pipeline {
         label 'test'
       }
       steps{
-        unstash 'code'
         sh './run_tests.sh'
+        unstash 'code'
       }
     }
     stage('DockerHub push') {
