@@ -9,7 +9,7 @@ stage('Clone down') {
         stash excludes: '.git', name: 'code'
     }
 }
-   stage('Python tests'){
+   stage('Build docker image'){
         agent any
         environment {
             DOCKERCREDS = credentials('docker_login') //use the credentials just created in this stage
@@ -19,6 +19,15 @@ stage('Clone down') {
             sh 'ci/build-docker.sh'
             stash excludes: '.git', name: 'code'
         }
+   }
+   stage('Run python tests') {
+       agent any 
+        steps {
+            unstash 'code'
+            sh 'ci/python-test.sh'
+            stash exludes: '.git', name: 'code' //Is this step optionally
+        } 
+       
    }
  }
 }
