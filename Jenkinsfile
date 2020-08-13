@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    docker {
-      image 'python:3.5.1'
-    }
 
-  }
   stages {
     stage('stash code_base') {
       steps {
@@ -15,16 +10,21 @@ pipeline {
     stage('Parrallel') {
       parallel {
         stage('Test') {
+          agent {
+             docker {
+               image 'python:3.5.1'
+           }
           steps {
             sh 'pip install -r requirements.txt'
             sh 'python tests.py'
           }
         }
+     }
 
         stage('zip codebase') {
           agent {
             docker {
-              image:alpine
+              image 'alpine'
            }
            steps {
             unstash 'code_base'
