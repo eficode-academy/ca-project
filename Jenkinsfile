@@ -15,6 +15,7 @@ pipeline {
 
         stage('Artifacts') {
           steps {
+            skipDefaultCheckout(true)
             sh './build_zip.sh'
             archiveArtifacts artifacts: 'ca-build.zip'
           }
@@ -24,11 +25,9 @@ pipeline {
     stage('Unit testing'){
       agent {
         label 'test'
-        docker {
-          image 'python:3'
-        }
       }
       steps{
+        skipDefaultCheckout(true)
         unstash 'code'
         sh './run_tests.sh'
       }
@@ -44,6 +43,7 @@ pipeline {
         }
       }
       steps {
+        skipDefaultCheckout(true)
         unstash 'code'
         sh 'echo "$DOCKERCREDS_PSW" | docker login -u "$DOCKERCREDS_USR" --password-stdin'
         sh './push_to_hub.sh'
