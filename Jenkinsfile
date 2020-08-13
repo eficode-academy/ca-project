@@ -9,7 +9,7 @@ pipeline {
         sh 'echo "hello world"'
       }
     }
-    stage('clone down') {
+    stage('Clone down') {
       steps {
         stash(excludes: '.git', name: 'code')
       }
@@ -22,18 +22,26 @@ pipeline {
         sh 'python3 tests.py'
       }
     }
-    stage("dockerize"){
+    stage("Dockerize"){
       environment {
         DOCKERCREDS = credentials('docker_login') //use the credentials just created in this stage
       }
       steps{
         unstash 'code'
         sh 'echo "$DOCKERCREDS_PSW" | docker login -u "$DOCKERCREDS_USR" --password-stdin'
-        sh 'ls'
         sh 'docker build -t $docker_username/devopsproject .'
-      
+        stash(name: 'image')
       }
     }
-
+    stage("Push docker image"){
+      environment {
+        DOCKERCREDS = credentials('docker_login') //use the credentials just created in this stage
+      }
+      steps{
+        unstash 'image'
+        sh 'echo "$DOCKERCREDS_PSW" | docker login -u "$DOCKERCREDS_USR" --password-stdin'
+        sh 'docker push $docker_username/devopsproject'
+      }
+    }
   }
 }
