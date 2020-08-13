@@ -8,7 +8,7 @@ pipeline {
     docker_username = 'nibug18'
   }
   stages {
-    stage('clone down') {
+    stage('Clone down') {
       steps {
         stash excludes: '.git', name: 'code'
       }
@@ -22,7 +22,7 @@ pipeline {
       }
     }
 
-    stage('parallel stage') {
+    stage('Parallel stage') {
       parallel {
         stage('package') {
           steps {
