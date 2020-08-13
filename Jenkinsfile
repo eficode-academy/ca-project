@@ -4,6 +4,9 @@ pipeline {
       image 'python'
     }
   }
+  environment {
+    docker_username = 'nibug18'
+  }
   stages {
     stage('clone down') {
       steps {
@@ -25,9 +28,6 @@ pipeline {
       }
     }
   
-  environment {
-    docker_username = 'nibug18'
-  }
     stage('Test') {
       steps {
         unstash 'code'
