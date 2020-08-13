@@ -25,7 +25,7 @@ stage('Clone down') {
        parallel{
            stage('Create artifacts') {
                steps {
-                   sh '''mkdir artifacts
+                   sh '''mkdir ./artifacts
                         tar -zcvf ./artifacts/flaskproject.tar.gz .'''
                     archiveArtifacts artifacts: 'artifacts/flaskprojects.tar.gz'
                }
