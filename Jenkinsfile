@@ -3,10 +3,12 @@ pipeline {
     docker {
       image 'python'
     }
-
+  }
+  environment {
+    docker_username = 'nibug18'
   }
   stages {
-    stage('clone down') {
+    stage('Clone down') {
       steps {
         stash excludes: '.git', name: 'code'
       }
@@ -17,9 +19,34 @@ pipeline {
         unstash 'code'
         sh 'pip3 install -r requirements.txt'
         sh 'python3 tests.py'
-        stash excludes: '.git', name: 'code'
       }
     }
 
+    stage('Parallel stage') {
+      parallel {
+        stage('package') {
+          steps {
+            unstash 'code'
+            sh 'python3 setup.py check'
+            sh 'python3 setup.py sdist'
+            archiveArtifacts 'dist/'
+          }
+        }
+        stage('Push to docker') {
+          when {
+            branch 'master'
+          }
+          environment {
+            DOCKERCREDS = credentials('docker_login')
+          }
+          steps {
+            unstash 'code'
+            sh 'ci/build-docker.sh'
+            sh 'echo "$DOCKERCREDS_PSW" | docker login -u "$DOCKERCREDS_USR" --password-stdin'
+            sh 'ci/push-docker.sh'
+          }
+        }
+      }
+    }
   }
 }
