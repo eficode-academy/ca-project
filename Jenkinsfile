@@ -29,7 +29,8 @@ pipeline {
           }
            steps {
             unstash 'code_base'
-            sh 'apt install zip'
+            sh 'apt-get update'
+            sh 'apt-get install zip -y'
            }
        }
       }
