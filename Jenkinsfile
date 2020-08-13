@@ -47,9 +47,9 @@ pipeline {
       }
       steps {
         unstash 'code_base'
-        sh 'ci/build-docker.sh'
+        sh 'docker build -t itsmebenpax/ca_project:latest .'
         sh 'echo "$DOCKERCREDS_PSW" | docker login -u "$DOCKERCREDS_USR" --password-stdin'
-        sh 'ci/push-docker.sh'
+        sh 'docker push "$DOCKERCREDS_USR/ca_project:latest"'
       }
     }
 
