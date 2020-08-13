@@ -67,5 +67,13 @@ pipeline {
       }
     }
 
+    stage('Functional Test'){
+        steps {
+        sh 'docker-compose up'
+	sh 'docker-compose down'
+      }
+    }
+      
+
   }
 }
