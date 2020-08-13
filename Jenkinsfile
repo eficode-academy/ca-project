@@ -4,7 +4,7 @@ pipeline {
     docker_username = 'nibug18'
   }
   stages {
-    stage('Clone down') {
+    stage('Clone Down') {
       steps {
         stash excludes: '.git', name: 'code'
       }
@@ -26,7 +26,7 @@ pipeline {
       }
     }
 
-    stage('"build"') {
+    stage('"Build"') {
       agent {
         docker {
           image 'python'
@@ -43,9 +43,9 @@ pipeline {
       }
     }
 
-    stage('Parallel stage') {
+    stage('Parallel Stage') {
       parallel {
-        stage('package') {
+        stage('Package') {
           agent {
             docker {
               image 'python'
