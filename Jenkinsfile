@@ -33,7 +33,7 @@ pipeline {
             unstash 'code_base'
             sh 'apt-get update'
             sh 'apt-get install zip -y'
-            sh 'zip test $'
+            sh 'zip test $PWD'
             archiveArtifacts 'test.zip'
           }
         }
