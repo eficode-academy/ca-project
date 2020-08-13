@@ -23,7 +23,7 @@ pipeline {
     stage('Unit testing'){
       agent {
         docker {
-          image Python:3
+          image 'python:3'
         }
       }
       steps{
