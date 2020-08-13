@@ -17,6 +17,7 @@ pipeline {
 
           }
           steps {
+            unstash 'code_base'
             sh 'pip install -r requirements.txt'
             sh 'python tests.py'
           }
