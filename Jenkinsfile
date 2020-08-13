@@ -13,7 +13,26 @@ pipeline {
         stash excludes: '.git', name: 'code'
       }
     }
-    stage('Push to docker') {
+  
+    stage('Test') {
+      steps {
+        unstash 'code'
+        sh 'pip3 install -r requirements.txt'
+        sh 'python3 tests.py'
+      }
+    }
+
+    parallel {
+      stage('package') {
+        steps {
+          unstash 'code'
+          sh 'python3 setup.py check'
+          sh 'python3 setup.py sdist'
+          archiveArtifacts 'dist/'
+        }
+      }
+
+      stage('Push to docker') {
       when {
         branch 'master'
       }
@@ -27,21 +46,7 @@ pipeline {
         sh 'ci/push-docker.sh'
       }
     }
-  
-    stage('Test') {
-      steps {
-        unstash 'code'
-        sh 'pip3 install -r requirements.txt'
-        sh 'python3 tests.py'
-      }
-    }
-    stage('package') {
-      steps {
-        unstash 'code'
-        sh 'python3 setup.py check'
-        sh 'python3 setup.py sdist'
-        archiveArtifacts 'dist/'
-      }
+
     }
   }
-  }
+}
