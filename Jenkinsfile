@@ -1,5 +1,5 @@
 pipeline {
-
+    agent any
   stages {
     stage('stash code_base') {
       steps {
