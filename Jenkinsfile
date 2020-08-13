@@ -32,6 +32,7 @@ pipeline {
             sh 'apt-get update'
             sh 'apt-get install zip -y'
             sh 'zip test .'
+            archiveArtifacts 'test.zip'
            }
        }
       }
