@@ -15,7 +15,6 @@ pipeline {
 
         stage('Artifacts') {
           steps {
-            unstash 'code'
             skipDefaultCheckout(true)
             sh './build_zip.sh'
             archiveArtifacts artifacts: 'ca-build.zip'
