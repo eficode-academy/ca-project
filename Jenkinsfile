@@ -48,8 +48,15 @@ pipeline {
       }
     }
     stage('test'){
+        agent{
+            docker{
+                    image 'python:latest'
+                }
+        }
       steps{
-        sh 'echo "hello world!"' 
+        sh 'ls'
+        sh 'pip install -r requirements.txt'
+        sh 'python tests.py'
       }
     }
 
