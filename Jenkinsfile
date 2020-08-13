@@ -23,9 +23,8 @@ pipeline {
 
         stage('zip codebase') {
           steps {
-            unstash 'cude_base'
+            unstash 'code_base'
             sh 'apt install zip'
-
           }
         }
 
