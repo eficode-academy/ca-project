@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'https://hub.docker.com/r/mifor16/flaskproject'
+    }
+
+  }
   stages {
     stage('Python tests') {
       steps {
