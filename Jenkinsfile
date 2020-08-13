@@ -15,6 +15,7 @@ pipeline {
 
         stage('Artifacts') {
           steps {
+            zipFile name: 'zippedfiles', archive: true, dir: './'
             archiveArtifacts 'app/'
           }
         }
