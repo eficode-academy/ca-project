@@ -23,6 +23,7 @@ pipeline {
     }
     stage('Unit testing'){
       agent {
+        label 'test'
         docker {
           image 'python:3'
         }
