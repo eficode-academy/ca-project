@@ -1,0 +1,8 @@
+flask
+flask_sqlalchemy
+flask_wtf
+wtforms
+datetime
+migrate
+sqlalchemy
+config
