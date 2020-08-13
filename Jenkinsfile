@@ -21,6 +21,11 @@ pipeline {
       }
     }
     stage('Unit testing'){
+      agent {
+        docker {
+          image Python:3
+        }
+      }
       steps{
         unstash 'code'
         sh './run_tests.sh'
