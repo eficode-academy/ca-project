@@ -9,7 +9,7 @@ pipeline {
         stage('Dockerrize app') {
           steps {
             stash name: 'code', excludes:'.git'
-            sh 'build_script.sh'
+            sh './build_script.sh'
           }
         }
 
@@ -23,7 +23,7 @@ pipeline {
     stage('Unit testing'){
       steps{
         unstash 'code'
-        sh 'run_tests.sh'
+        sh './run_tests.sh'
       }
     }
     stage('DockerHub push') {
