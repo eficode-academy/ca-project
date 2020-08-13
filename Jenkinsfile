@@ -21,7 +21,11 @@ stage('Clone down') {
         }
    }
    stage('Run python tests') {
-       agent any 
+       agent {
+           docker {
+               image: 'python:3'
+           }
+       } 
         steps {
             unstash 'code'
             sh 'ci/python-test.sh'
