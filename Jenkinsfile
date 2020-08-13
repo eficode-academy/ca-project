@@ -31,7 +31,7 @@ pipeline {
     }
     
     stage('deploy on server'){
-      step{
+      steps{
         sh 'echo "hello world!"'
       }
     }
