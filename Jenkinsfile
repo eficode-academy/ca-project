@@ -27,7 +27,6 @@ pipeline {
         label 'test'
       }
       steps{
-        skipDefaultCheckout(true)
         unstash 'code'
         sh './run_tests.sh'
       }
