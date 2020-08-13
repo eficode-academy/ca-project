@@ -43,5 +43,12 @@ pipeline {
         sh 'docker push $docker_username/devopsproject'
       }
     }
+    stage("Archieve artifacts"){
+      steps{
+        unstash 'code'
+        sh 'apt-get update && apt-get install -y zip unzip'
+        sh 'zip -r . project_artifact'
+      }
+    }
   }
 }
