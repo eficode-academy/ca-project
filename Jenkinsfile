@@ -4,6 +4,11 @@ pipeline {
        docker_username = 'simonmdsn'
    }
  stages {
+stage('Clone down') {
+    steps {
+        stash excludes: '.git', name: 'code'
+    }
+}
    stage('Python tests'){
         agent any
         environment {
