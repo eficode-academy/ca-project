@@ -24,7 +24,7 @@ pipeline {
         sh 'ci/push-docker.sh'
       }
     }
-  }
+  
   environment {
     docker_username = 'nibug18'
   }
@@ -35,4 +35,5 @@ pipeline {
         sh 'python3 tests.py'
       }
     }
+  }
   }
