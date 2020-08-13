@@ -25,7 +25,7 @@ stage('Clone down') {
         steps {
             unstash 'code'
             sh 'ci/python-test.sh'
-            stash exludes: '.git', name: 'code' //Is this step optionally
+            stash excludes: '.git', name: 'code' //Is this step optionally
         } 
        
    }
