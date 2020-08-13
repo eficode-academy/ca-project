@@ -44,7 +44,17 @@ pipeline {
 
     stage('Push to docker') {
       when {
-        branch 'master'
+        anyOf {
+          expression {
+            branch 'master'
+          }
+
+          expression {
+            changeRequest()
+          }
+
+        }
+
       }
       environment {
         DOCKERCREDS = credentials('docker_login')
