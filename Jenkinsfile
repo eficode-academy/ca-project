@@ -35,7 +35,7 @@ pipeline {
             sh 'apt-get install zip -y'
             sh 'pwd'
             sh 'ls'
-            sh 'zip test $PWD'
+            sh 'zip test $PWD/.'
             archiveArtifacts 'test.zip'
           }
         }
