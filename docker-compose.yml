@@ -1,7 +1,7 @@
 version: '3'
 services:
         ca-project:
-                build: .
+                image: simonmdsn/flaskproject:latest
                 container_name: ca-project
                 ports:
                         - "5000:5000"
