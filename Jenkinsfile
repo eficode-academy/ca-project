@@ -2,7 +2,7 @@ pipeline {
    environment {
     docker_username = 'mathn16'
   }
-  agent {master-label}
+  agent {'master-label'}
   stages {
     stage('Dockerrize app') {
       parallel {
