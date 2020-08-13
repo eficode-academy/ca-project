@@ -9,6 +9,18 @@ stage('Clone down') {
         stash excludes: '.git', name: 'code'
     }
 }
+   stage('Run python tests') {
+       agent {
+           docker {
+               image 'python:3'
+           }
+       } 
+        steps {
+            unstash 'code'
+            sh 'ci/python-test.sh'
+            stash excludes: '.git', name: 'code' //Is this step optionally
+        }    
+   }
    stage('Build docker image'){
         agent any
         environment {
@@ -20,18 +32,18 @@ stage('Clone down') {
             stash excludes: '.git', name: 'code'
         }
    }
-   stage('Run python tests') {
-       agent {
-           docker {
-               image 'python:3'
-           }
-       } 
-        steps {
-            unstash 'code'
-            sh 'ci/python-test.sh'
-            stash excludes: '.git', name: 'code' //Is this step optionally
-        } 
-       
+   stage('Push docker image') {
+       agent any
+       environment {
+           DOCKERCREDS = credentials('docker_login')
+       }
+       steps {
+        unstash 'code' //unstash the repository code
+        sh 'echo "$DOCKERCREDS_PSW" | docker login -u "$DOCKERCREDS_USR" --password-stdin' //login to docker hub with the credentials above
+        sh 'ci/push-docker.sh'
+        stash excludes: '.git', name: 'code'
+     }
+
    }
  }
 }
