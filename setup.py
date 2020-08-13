@@ -1,14 +1,15 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='codechan',
-    version='0.1.0',
+    version='0.1.1',
     description='4chan for coders',
     url='https://github.com/devops-sdu-2020/ca-project',
     author='Emil Tang Kristensen',
     author_email='emiltangkristen@gmail.com',
     license='BSD 2-clause',
-    packages=['app'],
+    packages=find_packages(include=['run.py']),
+    include_package_data=True,
     install_requires=['click==7.1.2',
                       'Flask==1.1.2',
                       'Flask-SQLAlchemy==2.4.4',
@@ -20,7 +21,6 @@ setup(
                       'Werkzeug==1.0.1',
                       'WTForms==2.3.3'
                       ],
-
     classifiers=[
         'Development Status :: 1 - Planning',
         'Intended Audience :: Science/Research',
