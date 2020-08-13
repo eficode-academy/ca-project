@@ -36,8 +36,10 @@ pipeline {
         DOCKERCREDS = credentials('docker_login')
       }
       when {
-        branch 'master';
-        changeRequest()
+        anyOf{
+          branch 'master';
+          changeRequest()
+        }
       }
       steps {
         unstash 'code'
