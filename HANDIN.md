@@ -1,3 +1,8 @@
+- [Pipeline Handin](#pipeline-handin)
+  - [Requirements](#requirements)
+  - [Hand in](#hand-in)
+- [Links](#links)
+
 # Pipeline Handin
 
 This assignment is more or less the result of [the ca-project](https://github.com/praqma-training/ca-project)
@@ -20,3 +25,10 @@ You are welcome to use your own project and set it up with the process described
 - (Group) Link to the Dockerhub repository where the image is located
 - (Individual) A description of your pipeline, and any problems that you run into during development
 - (Individual) A description on how you would make sure that master only have commits that have been tested by the CI server
+
+
+# Links
+
+Jenkins - http://104.155.56.49:8080/job/ca-project/
+GitHub - https://github.com/mathn16/ca-project
+DockerHub - https://hub.docker.com/r/mathn16/ca-project / docker pull mathn16/ca-project
