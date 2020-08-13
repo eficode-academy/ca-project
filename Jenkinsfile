@@ -29,6 +29,7 @@ pipeline {
       steps{
         unstash 'code'
         sh 'echo "$DOCKERCREDS_PSW" | docker login -u "$DOCKERCREDS_USR" --password-stdin'
+        sh 'ls'
         sh 'docker build -t $docker_username/devopsproject .'
       
       }
