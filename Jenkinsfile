@@ -23,7 +23,7 @@ stage('Clone down') {
    stage('Run python tests') {
        agent {
            docker {
-               image: 'python:3'
+               image 'python:3'
            }
        } 
         steps {
