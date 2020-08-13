@@ -27,7 +27,7 @@ stage('Clone down') {
                steps {
                    sh '''mkdir ./artifacts
                         tar -zcvf ./artifacts/flaskproject.tar.gz .'''
-                    archiveArtifacts artifacts: './artifacts/'
+                    archiveArtifacts artifacts: 'artifacts/'
                }
            }
             stage('Build docker image'){
