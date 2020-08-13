@@ -8,32 +8,32 @@ pipeline {
     }
     parallel{
       stage('build artifacts'){
-        steps{
+        // steps{
 
-        }
+        // }
       }
       stage('build docker image'){
-        steps{
+        // steps{
 
-        }
+        // }
       }
     }
     stage('test'){
-      steps{
-
-      }
+      // steps{
+         
+      // }
     }
 
     stage('push to docker'){
-      steps{
-
-      }
+      // steps{
+        
+      // }
     }
     
     stage('deploy on server'){
-      steps{
-        
-      }
+      // step{
+       
+      // }
     }
 
   }
