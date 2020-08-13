@@ -1,21 +1,48 @@
 pipeline {
   agent any
+  environment{
+      DOCKER_USER='d0wnt0wn3d'
+  }
   stages {
     stage('clone') {
       steps {
-        sh 'echo "hello world!"'
+        stash excludes: ".git/", name: "code"
       }
     }
     stage('parallel execution'){
       parallel{
         stage('build artifacts'){
+            agent{
+                docker{
+                    image 'ubuntu:latest'
+                }
+            }
+        options{
+            skipDefaultCheckout()
+        }
           steps{
-            sh 'echo "hello world!"'
+            unstash 'code'
+            sh 'apt-get update'
+            sh 'apt-get install zip -y'
+            sh 'zip -r artefacts.zip ./'
+            archiveArtifacts 'artefacts.zip'
           }
         }
         stage('build docker image'){
+            agent{
+                docker{
+                    image 'docker:latest'
+                }
+            }
+            options{
+                skipDefaultCheckout()
+            }
           steps{
-            sh 'echo "hello world!"'
+            unstash 'code'
+            sh 'docker build -t ${DOCKER_USER}/codechan .'
+            sh 'docker image ls'
+            
+            
           }
         }
       }
