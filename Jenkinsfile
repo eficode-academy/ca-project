@@ -30,7 +30,6 @@ pipeline {
             stash(name: 'image')
           }
         }
-      }
       stage("Archive artifacts") {
         steps {
           unstash 'code'
