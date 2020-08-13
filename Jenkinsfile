@@ -67,14 +67,13 @@ pipeline {
       }
     }
 
-    stage('Functional Test'){
-        steps {
+    stage('Functional Test') {
+      steps {
         sh 'docker-compose up -d'
         sh 'curl http://35.205.218.202:5000'
-	sh 'docker-compose down'
+        sh 'docker-compose down'
       }
     }
-      
 
   }
 }
