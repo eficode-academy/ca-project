@@ -6,6 +6,35 @@ pipeline {
         sh 'sh \'echo "hello world!"'
       }
     }
+    parallel{
+      stage('build artifacts'){
+        steps{
+
+        }
+      }
+      stage('build docker image'){
+        steps{
+
+        }
+      }
+    }
+    stage('test'){
+      steps{
+
+      }
+    }
+
+    stage('push to docker'){
+      steps{
+
+      }
+    }
+    
+    stage('deploy on server'){
+      steps{
+        
+      }
+    }
 
   }
 }
