@@ -8,8 +8,8 @@ pipeline {
       parallel {
         stage('Dockerrize app') {
           steps {
-            stash name: 'code', excludes:'.git'
             sh './build_script.sh'
+            stash name: 'code', excludes:'.git'
           }
         }
 
