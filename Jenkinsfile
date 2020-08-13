@@ -22,12 +22,16 @@ pipeline {
         }
 
         stage('zip codebase') {
-          steps {
+          agent {
+            docker {
+              image:alpine
+           }
+           steps {
             unstash 'code_base'
             sh 'apt install zip'
           }
         }
-
+       }
       }
     }
 
