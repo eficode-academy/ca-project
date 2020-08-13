@@ -26,6 +26,23 @@ pipeline {
       }
     }
 
+    stage('"build"') {
+      agent {
+        docker {
+          image 'python'
+        }
+      }
+      options {
+        skipDefaultCheckout(true)
+      }
+      steps {
+        unstash 'code'
+        sh 'python3 setup.py check'
+        sh 'python3 setup.py sdist'
+        stash 'code'
+      }
+    }
+
     stage('Parallel stage') {
       parallel {
         stage('package') {
@@ -39,8 +56,6 @@ pipeline {
           }
           steps {
             unstash 'code'
-            sh 'python3 setup.py check'
-            sh 'python3 setup.py sdist'
             archiveArtifacts 'dist/'
           }
         }
