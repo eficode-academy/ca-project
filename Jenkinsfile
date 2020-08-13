@@ -21,7 +21,16 @@ stage('Clone down') {
             stash excludes: '.git', name: 'code' //Is this step optionally
         }    
    }
-   stage('Build docker image'){
+   stage('Parallel') {
+       parallel{
+           stage('Create artifacts') {
+               steps {
+                   sh '''mkdir artifacts
+                        tar -zcvf ./artifacts/flaskproject.tar.gz .'''
+                    archiveArtifacts artifacts: 'artifacts/flaskprojects.tar.gz'
+               }
+           }
+            stage('Build docker image'){
         agent any
         environment {
             DOCKERCREDS = credentials('docker_login') //use the credentials just created in this stage
@@ -32,6 +41,10 @@ stage('Clone down') {
             stash excludes: '.git', name: 'code'
         }
    }
+
+   }
+  
+   
    stage('Push docker image') {
        agent any
        environment {
